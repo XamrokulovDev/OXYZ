@@ -9,7 +9,8 @@ const Header = () => {
     { keyword: "about", title: "О нас" },
     { keyword: "services", title: "Услуги" },
     { keyword: "news", title: "Новости" },
-    { keyword: "contact", title: "Контакты" }
+    { keyword: "contact", title: "Контакты" },
+    { keyword: "/news/", title: "Новости"}
   ];
 
   const currentPath = location.pathname.replace("/", "");
