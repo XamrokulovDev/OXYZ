@@ -52,11 +52,11 @@ const Services = () => {
             </button>
             <div className="absolute bottom-0 left-0 w-full bg-[#F07C0000]/40 backdrop-blur-sm text-white px-4 py-3 z-20 transition-all duration-500">
               <div className="transition-all duration-500 transform group-hover:-translate-y-3">
-                <h1 className="text-[20px] md:text-[26px] font-semibold leading-snug whitespace-pre-line line-clamp-2 min-h-[64px]">
+                <h1 className="text-[20px] md:text-[32px] font-manrope font-[600] leading-[120%] whitespace-pre-line line-clamp-2 min-h-[64px]">
                   {service.title}
                 </h1>
               </div>
-              <p className="text-sm opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-700 ease-in-out mt-2">
+              <p className="text-[18px] font-manrope leading-[140%] font-[500] opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-700 ease-in-out mt-2">
                 {service.description}
               </p>
             </div>

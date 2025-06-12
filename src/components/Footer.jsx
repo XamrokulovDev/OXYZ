@@ -85,24 +85,41 @@ const Footer = () => {
           variants={variants}
         >
           <div>
-            <div className="mb-4">
+            <NavLink to="/" className="block mb-4">
               <img src={logo} alt="OXYZ" className="h-10" />
-            </div>
+            </NavLink>
             <p className="text-white/50 font-manrope font-[400] text-[20px] mb-4">
               OXYZ - Ваше спокойствие, <br /> наша работа.
             </p>
             <div className="flex space-x-2">
-              {[FaWhatsapp, FaTelegramPlane, FaFacebookF, FaInstagram].map(
-                (Icon, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
-                  >
-                    <Icon className="text-white text-lg" />
-                  </a>
-                )
-              )}
+              <a
+                href="https://whatsapp.com"
+                target="_blank"
+                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+              >
+                <FaWhatsapp className="text-white text-lg" />
+              </a>
+              <a
+                href="https://telegram.com"
+                target="_blank"
+                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+              >
+                <FaTelegramPlane className="text-white text-lg" />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+              >
+                <FaFacebookF className="text-white text-lg" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+              >
+                <FaInstagram className="text-white text-lg" />
+              </a>
             </div>
           </div>
 
@@ -138,9 +155,9 @@ const Footer = () => {
               Контакты
             </h3>
             <ul className="text-white/50 leading-[100%] text-[18px] font-[400] font-manrope space-y-4">
-              <li>+998-99-536-57-47</li>
-              <li>+998-90-823-22-32</li>
-              <li>ufdworldservice@gmail.com</li>
+              <a href={`tel:+998-99-536-57-47`} target="_blank" className="block">+998-99-536-57-47</a>
+              <a href={`tel:+998-90-823-22-32`} target="_blank" className="block">+998-90-823-22-32</a>
+              <a href={`ufdworldservice@gmail.com`} target="_blank" className="block">ufdworldservice@gmail.com</a>
               <li>
                 г. Ташкент, Чиланзарский р., <br />
                 3-ЧАРХ Камолон МФЙ, <br />

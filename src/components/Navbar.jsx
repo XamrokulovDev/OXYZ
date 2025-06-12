@@ -9,9 +9,12 @@ import { PiInstagramLogoFill } from "react-icons/pi";
 import { FaTelegramPlane } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavbarList } from "../../data/data";
+import Translation from "../utils/Translation";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t, i18n } = useTranslation();
 
   const sidebarVariants = {
     hidden: { x: "100%" },
@@ -72,6 +75,7 @@ const Navbar = () => {
               </p>
             </motion.div>
             <div className="flex items-center gap-1">
+              <Translation />
               <motion.a
                 href="https://wa.me/998908232232"
                 target="_blank"
@@ -91,7 +95,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(true)}
               >
                 <p className="text-[#1A1A18] font-manrope font-[400] text-[16px] leading-[100%]">
-                  Меню
+                  {t('global.menu')}
                 </p>
                 <TbMenu size={20} />
               </motion.div>
@@ -125,7 +129,7 @@ const Navbar = () => {
                 className="absolute top-12 right-10 flex items-center cursor-pointer gap-2"
               >
                 <p className="text-[#1A1A18] font-manrope font-[400] text-[16px] leading-[100%]">
-                  Закрыть
+                  {t('global.close')}
                 </p>
                 <IoClose size={21} />
               </button>
@@ -148,7 +152,10 @@ const Navbar = () => {
                           }`
                         }
                       >
-                        {item.title}
+                        {i18n.language === "uz"
+                          ? item.title_uz
+                          : item.title_ru
+                        }
                       </NavLink>
                     </motion.li>
                   ))}

@@ -4,6 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { motion } from 'framer-motion';
 import image from "../assets/NewCardImg.svg";
+import { NavLink } from 'react-router-dom';
 
 const HomeCards = () => {
   const news = [
@@ -68,7 +69,7 @@ const HomeCards = () => {
               <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">{item.title}</h2>
               <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-12">{item.text}</p>
               <div className="flex justify-between items-center">
-                <p className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">Читать статью</p>
+                <NavLink to={`/news/`} className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">Читать статью</NavLink>
                 <p className="text-[#A7A6A1] font-manrope font-[500] leading-[100%] text-[14px]">{item.date}</p>
               </div>
             </motion.div>
@@ -120,7 +121,7 @@ const HomeCards = () => {
                     <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">{item.title}</h2>
                     <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-6">{item.text}</p>
                     <div className="flex justify-between items-center">
-                      <p className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">Читать статью</p>
+                      <NavLink to={`/news/`} className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">Читать статью</NavLink>
                       <p className="text-[#A7A6A1] font-manrope font-[500] leading-[100%] text-[14px]">{item.date}</p>
                     </div>
                   </motion.div>

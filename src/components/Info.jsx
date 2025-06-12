@@ -87,7 +87,7 @@ const Info = () => {
           </p>
         </div>
         {/* O'NG PANEL */}
-        <div className=" flex gap-8 max-md:gap-[10px] mb-[60vh] max-md:w-full max-md:mb-0 max-lg:w-[100%] w-full max-lg:mb-0 max-lg:mt-16">
+        <div className=" flex gap-8 max-md:gap-[10px] max-md:w-full max-md:mb-0 max-lg:w-[100%] w-full max-lg:mb-0 max-lg:mt-16">
           {/* Step raqamlari */}
           <div className="flex flex-col">
             {dataList.map((item) => (

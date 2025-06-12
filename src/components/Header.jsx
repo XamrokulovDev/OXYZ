@@ -1,6 +1,7 @@
 import { IoIosArrowForward } from "react-icons/io"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
+import { useTranslation } from "react-i18next"
 
 const textVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -16,6 +17,7 @@ const textVariants = {
 }
 
 const Header = () => {
+  const { t } = useTranslation();
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.3 })
 
   return (
@@ -62,7 +64,7 @@ const Header = () => {
             className="group relative bg-white text-orange-500 rounded-[8px] flex items-center overflow-hidden cursor-pointer gap-3 pl-7 p-2"
           >
             <span className="flex items-center text-[#1A1A18] font-[400] md:text-[24px] text-[16px] leading-[100%] gap-3">
-              Получить консультацию
+              {t('global.button')}
               <span className="bg-orange-500 group-hover:bg-orange-600 transition-all duration-300 text-white p-4 text-xl rounded-sm">
                 <IoIosArrowForward size={20} />
               </span>
