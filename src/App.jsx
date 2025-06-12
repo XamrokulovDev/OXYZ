@@ -10,7 +10,8 @@ const App = () => {
       element: <Routerlayout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "/about", element: <About /> }
+        { path: "/about", element: <About /> },
+        { path: "*", element: <Routerlayout /> }
       ]
     }
   ]);
