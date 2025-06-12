@@ -39,7 +39,7 @@ const Services = () => {
   return (
     <div className='flex flex-col gap-[50px] '>
         <Header/>
-        <div className='flex flex-col gap-[20px] mx-auto container'>
+        <div className='flex flex-col gap-[20px] mx-auto container px-4'>
             <h1 className='font-manrope font-[500] leading-[120%] text-center text-[48px] text-[#1A1A18] max-md:text-[32px] max-lg:text-[36px]'>Наши услуги</h1>
             <p className='font-manrope font-[400] text-[20px] leading-[140%] text-center text-[#1A1A18] max-md:text-[16px] max-md:px-6'>Оставьте заявку и получите расчет доставки вашего груза</p>
         </div>
@@ -58,31 +58,35 @@ const Services = () => {
         <div className=' flex justify-between items-start gap-[50px] flex-col max-md:gap-[30px] max-lg:gap-[35px] max-xl:gap-[30px]'>
         <p className='font-[500] leading-[140%] font-manrope text-[20px] text-[#84837D] max-md:text-[16px] max-xl:text-[18px]'>{service.description}</p>
 
-        <motion.button
-          className="relative cursor-pointer bg-orange-500 group-hover:bg-orange-600 transition-all duration-300 text-white font-[400] p-2 pl-7 rounded-[8px] flex items-center gap-3 overflow-hidden md:text-[20px] text-[16px] leading-[100%] max-xl:text-[18px]"
-        >
-          <span>Получить консультацию</span>
-          <span className="bg-white text-orange-500 group-hover:text-orange-600 transition-all duration-300 p-4 rounded-md">
-            <IoIosArrowForward size={20} />
-          </span>
-          {/* Shine */}
-          <motion.div
-            className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
-            initial={{ x: "-100%" }}
-            animate={inView ? { x: ["-100%", "200%"] } : {}}
-            transition={{
-              duration: 2.5,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatDelay: 2.5,
-              ease: "easeInOut",
-            }}
-          >
-            <div className="w-[35%] h-full bg-gradient-to-r from-transparent via-white/50 to-transparent transform -skew-x-15" />
-          </motion.div>
-        </motion.button>
+        <div className="relative inline-block group">
+            <motion.button
+              className="relative bg-[#F07C00] group-hover:bg-orange-600 text- font-semibold rounded-md flex items-center overflow-hidden cursor-pointer gap-3 pl-7 p-2"
+            >
+              <span className="flex items-center text-white font-[400] font-manrope text-[20px] max-xl:text-[16px] leading-[100%] gap-3">
+                Получить консультацию
+                <span className="bg-white group-hover:bg-orange-600 transition-all duration-300 text-[#F07C00] p-4 max-xl:p-2 text-xl rounded-sm">
+                  <IoIosArrowForward size={20} />
+                </span>
+              </span>
+              {/* Shine effect */}
+              <motion.div
+                className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
+                initial={{ x: "-100%" }}
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                  ease: "easeInOut",
+                }}
+              >
+                <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
+              </motion.div>
+            </motion.button>
+          </div>
         </div>
       </div>
-      <div className='w-[120%] h-full max-md:w-full max-lg:w-full'>
+      <div className='w-[120%] h-full max-md:w-full max-lg:w-full max-md:px-5'>
         <img src={service.image} alt="" className='w-full h-full rounded-[16px] ' />
       </div>
     </div>
