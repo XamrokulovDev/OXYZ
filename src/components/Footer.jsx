@@ -10,12 +10,14 @@ import { IoIosArrowForward } from "react-icons/io";
 import logo from "../assets/Group 9.svg";
 import { NavbarList } from "../../data/data";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, threshold: 0.2 });
   const controls = useAnimation();
   const [isOpen, setIsOpen] = useState(false);
+  const { t, i18n } = useTranslation();
   
 
   useEffect(() => {
@@ -143,7 +145,10 @@ const Footer = () => {
                     }}
                      className={`text-white/50 leading-[100%] text-[18px] font-[400] font-manrope`}
                   >
-                     {item.title}
+                    {i18n.language === "uz"
+                      ? item.title_uz
+                      : item.title_ru
+                    }
                   </NavLink>
                 </motion.li>
               ))}

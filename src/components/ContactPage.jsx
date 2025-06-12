@@ -35,9 +35,7 @@ const ContactPage = () => {
     setError('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Bu yerda siz serverga jo‘natish logikasini yozishingiz mumkin
-
-    setForm({ name: '', phone: '', agree: false }); // Formani tozalash
+    setForm({ name: '', phone: '', agree: false });
   };
 
   return (
@@ -47,13 +45,10 @@ const ContactPage = () => {
           initial={{ opacity: 0, y: 50 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.6 }}>
-
           <div>
             <h1 className='font-manrope text-[#1A1A18] font-[600] text-[28px] sm:text-[40px] leading-[100%]'>Контакты</h1>
           </div>
-
           <div className='my-15'>
-            {/* Telefon, email va address bloki (siz bergancha) */}
             <div className='flex gap-2 my-10'>
               <BsTelephone className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
@@ -118,21 +113,19 @@ const ContactPage = () => {
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">+998</span>
-<input
-  id="phone"
-  type="text"
-  inputMode="numeric"
-  pattern="[0-9]*"
-  placeholder="XX XXX XX XX"
-  value={form.phone}
-  onChange={(e) => {
-    // Faqat raqamlar va maksimal uzunlik 9 bo‘lsin
-    const onlyNums = e.target.value.replace(/\D/g, '').slice(0, 9);
-    setForm({ ...form, phone: onlyNums });
-  }}
-  className="w-full pl-14 pr-4 py-3 border rounded-md focus:ring-2 focus:ring-orange-400 transition border-[#CAC9C5] placeholder:text-[#BDBDBD]"
-/>
-
+                <input
+                  id="phone"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  placeholder="XX XXX XX XX"
+                  value={form.phone}
+                  onChange={(e) => {
+                    const onlyNums = e.target.value.replace(/\D/g, '').slice(0, 9);
+                    setForm({ ...form, phone: onlyNums });
+                  }}
+                  className="w-full pl-14 pr-4 py-3 border rounded-md focus:ring-2 focus:ring-orange-400 transition border-[#CAC9C5] placeholder:text-[#BDBDBD]"
+                />
               </div>
             </div>
 
@@ -152,16 +145,15 @@ const ContactPage = () => {
             {error && <p className="text-red-500 mt-4">{error}</p>}
 
             <button
-  type="submit"
-  disabled={!form.agree}
-  className={`w-full sm:w-[515px] h-[67px] text-[16px] sm:text-[20px] font-[500] font-manrope leading-[100%] rounded-md mt-5 transition 
-    ${form.agree 
-      ? 'bg-[#f5c84b] text-[#FFFAEA] cursor-pointer' 
-      : 'bg-[#f5c84b] text-[#FFFAEA] opacity-50 cursor-not-allowed'
-    }`}>
-  Отправить
-</button>
-
+              type="submit"
+              disabled={!form.agree}
+              className={`w-full sm:w-[515px] h-[67px] text-[16px] sm:text-[20px] font-[500] font-manrope leading-[100%] rounded-md mt-5 transition 
+                ${form.agree 
+                  ? 'bg-[#F07C00] text-[#FFFAEA] cursor-pointer' 
+                  : 'bg-[#f5c84b] text-[#FFFAEA] opacity-50 cursor-not-allowed'
+                }`}>
+              Отправить
+            </button>
           </form>
         </motion.div>
       </div>

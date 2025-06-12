@@ -4,9 +4,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { motion } from 'framer-motion';
 import image from "../assets/NewCardImg.svg";
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom'
+import {useEffect} from 'react'
 
 const HomeCards = () => {
+  
+
   const news = [
     {
       id: 1,
@@ -57,24 +60,34 @@ const HomeCards = () => {
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">
           {news.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="p-3 bg-white rounded-xl border-[1px] border-gray-200"
-            >
-              <img src={item.img} className="w-full rounded-lg mb-4" alt="news" />
-              <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">{item.title}</h2>
-              <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-12">{item.text}</p>
-              <div className="flex justify-between items-center">
-                <NavLink to={`/news/`} className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">Читать статью</NavLink>
-                <p className="text-[#A7A6A1] font-manrope font-[500] leading-[100%] text-[14px]">{item.date}</p>
-              </div>
-            </motion.div>
+            <NavLink to={`/new/${item.id}`} key={item.id} onClick={window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="p-3 bg-white rounded-xl border-[1px] border-gray-200 hover:shadow-lg transition-shadow"
+              >
+                <img src={item.img} className="w-full rounded-lg mb-4" alt="news" />
+                <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">
+                  {item.title}
+                </h2>
+                <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-12">
+                  {item.text}
+                </p>
+                <div className="flex justify-between items-center">
+                  <p className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">
+                    Читать статью
+                  </p>
+                  <p className="text-[#A7A6A1] font-manrope font-[500] leading-[100%] text-[14px]">
+                    {item.date}
+                  </p>
+                </div>
+              </motion.div>
+            </NavLink>
           ))}
         </div>
+
       </div>
 
       {/* MOBILE */}
@@ -110,22 +123,33 @@ const HomeCards = () => {
             >
               {news.map((item, index) => (
                 <SwiperSlide key={item.id} className="mb-10">
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.2, duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="p-4 bg-white rounded-xl border border-gray-300 w-full"
-                  >
-                    <img src={item.img} className="w-full rounded-lg mb-4" alt="news" />
-                    <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">{item.title}</h2>
-                    <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-6">{item.text}</p>
-                    <div className="flex justify-between items-center">
-                      <NavLink to={`/news/`} className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">Читать статью</NavLink>
-                      <p className="text-[#A7A6A1] font-manrope font-[500] leading-[100%] text-[14px]">{item.date}</p>
-                    </div>
-                  </motion.div>
+                  <NavLink to={`/new/${item.id}`} onClick={window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.2, duration: 0.5 }}
+                      viewport={{ once: true }}
+                      className="p-4 bg-white rounded-xl border border-gray-300 w-full"
+                    >
+                      <img src={item.img} className="w-full rounded-lg mb-4" alt="news" />
+                      <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">
+                        {item.title}
+                      </h2>
+                      <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-6">
+                        {item.text}
+                      </p>
+                      <div className="flex justify-between items-center">
+                        <p className="text-[#1A1A18] font-[500] leading-[100%] font-manrope text-[20px] underline">
+                          Читать статью
+                        </p>
+                        <p className="text-[#A7A6A1] font-manrope font-[500] leading-[100%] text-[14px]">
+                          {item.date}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </NavLink>
                 </SwiperSlide>
+
               ))}
             </Swiper>
           </div>
