@@ -1,0 +1,70 @@
+import ship from '../assets/ship.jpg'
+import office from '../assets/office.jpg'
+import xujjat from '../assets/xujjat.jpg'
+import { MdArrowOutward } from "react-icons/md"
+import { motion } from 'framer-motion'
+
+const Services = () => {
+  const servicesData = [
+    {
+      image: ship,
+      title: 'Организация международных перевозок',
+      description: 'Полная логистика грузов по направлениям Европа — СНГ — Китай. Рефрижераторы для скоропортящихся товаров, тентованные авто для оборудования и нетемпературных грузов. Контроль 24/7, прозрачные сроки, документы под ключ.',
+      delay: 0,
+    },
+    {
+      image: office,
+      title: 'Консультирование по ВЭД',
+      description: 'Помогаем сориентироваться во внешнеэкономической деятельности: контракты, Incoterms, логистические риски и оптимизация расходов. Говорим на языке бизнеса, а не бюрократии.',
+      delay: 0.2,
+    },  
+    {
+      image: xujjat,
+      title: 'Таможенное оформление',
+      description: 'Организуем корректное и быстрое прохождение таможни: документы, расчёт платежей, взаимодействие с брокерами. Без задержек, лишних расходов и штрафов.',
+      delay: 0.4,
+    },
+  ];
+
+  return (
+    <div className='container mx-auto px-4 py-20'>
+      <h1 className='text-[28px] md:text-[48px] font-[600] text-[#1A1A18] text-center leading-[120%]'>Наши услуги</h1>
+      <p className='text-[#1A1A18] font-[400] text-[16px] md:text-[20px] text-center leading-[140%] mt-2'>Оставьте заявку и получите расчет доставки вашего груза</p>
+
+      <section className='mt-10 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center transition-all'>
+        {servicesData.map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: service.delay }}
+            viewport={{ once: true }}
+            className="group relative w-full h-[600px] max-sm:h-[400px] max-2xl:h-[450px] rounded-xl overflow-hidden cursor-pointer transition-all duration-500"
+          >
+            <img
+              src={service.image}
+              alt="background"
+              className="w-full h-full object-cover absolute top-0 left-0 z-0 transition-all duration-500 group-hover:brightness-75"
+            />
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#F07C00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+            <button className="absolute top-4 right-4 bg-white w-[54px] h-[54px] rounded-[8px] p-[15px] z-20 hover:text-[#F07C00] transition-all">
+              <MdArrowOutward className="w-[24px] h-[24px] outline-none cursor-pointer" />
+            </button>
+            <div className="absolute bottom-0 left-0 w-full bg-[#F07C0000]/40 backdrop-blur-sm text-white px-4 py-3 z-20 transition-all duration-500">
+              <div className="transition-all duration-500 transform group-hover:-translate-y-3">
+                <h1 className="text-[20px] md:text-[26px] font-semibold leading-snug whitespace-pre-line line-clamp-2 min-h-[64px]">
+                  {service.title}
+                </h1>
+              </div>
+              <p className="text-sm opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-700 ease-in-out mt-2">
+                {service.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </section>
+    </div>
+  );
+};
+
+export default Services;
