@@ -52,6 +52,7 @@ const Services = () => {
             <img
               src={service.image}
               alt="background"
+              loading='lazy'
               className="w-full h-full object-cover absolute top-0 left-0 z-0 transition-all duration-500 group-hover:brightness-75"
             />
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-[#F07C00] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />

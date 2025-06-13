@@ -31,7 +31,8 @@ const Header = () => {
       <div className="w-full h-full rounded-xl overflow-hidden relative">
         <img
           src={img}
-          alt=""
+          alt="header image"
+          loading="lazy"
           className="w-full h-full absolute top-0 left-0 z-2 object-cover"
         />
         <div className="w-full h-full bg-[#f07c00]/80 absolute inset-0 flex items-center justify-center z-3">

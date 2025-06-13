@@ -113,7 +113,12 @@ const Services = () => {
                 </div>
               </div>
               <div className='xl:w-[40%] h-full max-md:w-full max-lg:w-full max-md:px-5'>
-                <img src={service.image} alt="" className='w-full h-full rounded-[16px]' />
+                <img 
+                  src={service.image} 
+                  alt="servives"
+                  loading='lazy' 
+                  className='w-full h-full rounded-[16px]'
+                />
               </div>
             </div>
           )

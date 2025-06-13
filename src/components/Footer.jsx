@@ -57,7 +57,7 @@ const Footer = () => {
       <motion.div className="container mx-auto px-4 pt-16" variants={variants}>
         <div className="flex flex-col md:flex-row justify-between items-center max-lg:items-start mb-10 gap-6">
           <h1 className="md:text-[48px] text-[28px] font-manrope font-[600] leading-[120%]">
-            Остались вопросы?
+            {t('footer.title')}
           </h1>
           <div className="relative inline-block group">
             <motion.button
@@ -96,7 +96,12 @@ const Footer = () => {
         >
           <div>
             <NavLink to="/" className="block mb-4">
-              <img src={logo} alt="OXYZ" className="h-10" />
+              <img 
+                src={logo} 
+                alt="OXYZ" 
+                loading="lazy"
+                className="h-10" 
+              />
             </NavLink>
             <p className="w-[300px] text-white/50 font-manrope font-[400] text-[20px] mb-4">
               {t('footer.description')}

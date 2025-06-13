@@ -28,6 +28,7 @@ const Article = () => {
         src={container}
         alt=""
         className="my-[40px] w-full object-contain"
+        loading='lazy'
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}

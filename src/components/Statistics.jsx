@@ -72,6 +72,7 @@ function Statistics() {
           <img
             src={image}
             alt="OXYZ Logistics"
+            loading="lazy"
             className="rounded-2xl w-full h-full object-cover"
           />
         </motion.div>
@@ -90,6 +91,7 @@ function Statistics() {
             <img
               src={item.img}
               alt={`Stat ${index + 1}`}
+              loading="lazy"
               className="w-12 h-12"
             />
             <div className="mt-10">

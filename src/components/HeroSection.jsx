@@ -28,6 +28,7 @@ const HeroSection = () => {
         <img 
           src={map}
           alt="maping"
+          loading="lazy"
           className="w-full h-full max-sm:object-cover object-contain absolute top-0 left-0 opacity-30" 
         />
       </div>

@@ -244,6 +244,7 @@ const Form = () => {
           <img
             src={worldImage || "/placeholder.svg"}
             alt="World Map"
+            loading="lazy"
             className="absolute inset-0 w-full h-full object-cover opacity-80 bg-gray-100 z-0"
           />
           <div
@@ -591,6 +592,7 @@ const Form = () => {
               <img
                 src={isMobile ? manager : girlImage}
                 alt="Girl with headset"
+                loading="lazy"
                 className={`${
                   isMobile
                     ? "w-full h-auto max-h-[400px] object-contain mx-auto"

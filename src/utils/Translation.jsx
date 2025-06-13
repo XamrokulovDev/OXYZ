@@ -26,6 +26,7 @@ const TranslationCustom = () => {
       <img
         src={flag}
         alt={otherLang}
+        loading="lazy"
         className="w-6 h-4"
       />
     </button>
