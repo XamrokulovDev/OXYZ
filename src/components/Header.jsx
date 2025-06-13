@@ -59,39 +59,37 @@ const Header = () => {
           </motion.p>
           {/* BUTTON */}
           <motion.div
-            className="relative inline-block "
+            className="relative inline-block"
             custom={2}
             variants={textVariants}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            <div className="relative inline-block group">
-              <motion.button
-                onClick={handleOpenModal}
-                className="relative bg-[#F07C00] group-hover:bg-orange-600 rounded-[8px] flex items-center overflow-hidden cursor-pointer gap-3 mt-10 pl-7 p-2"
-              >
-                <span className="flex items-center text-white font-[400] font-manrope text-[20px] max-xl:text-[16px] leading-[100%] gap-3">
-                  {t('global.button')}
-                  <span className="bg-white transition-all duration-300 text-[#F07C00] p-4 max-xl:p-2 text-xl rounded-sm">
-                    <IoIosArrowForward size={20} />
-                  </span>
+            <motion.button
+              onClick={handleOpenModal}
+              className="group relative bg-white text-orange-500 rounded-[8px] flex items-center overflow-hidden cursor-pointer gap-3 pl-7 p-2"
+            >
+              <span className="flex items-center text-[#1A1A18] font-[400] md:text-[20px] text-[16px] leading-[100%] gap-3">
+                {t('global.button')}
+                <span className="bg-orange-500 group-hover:bg-orange-600 transition-all duration-300 text-white p-4 text-xl rounded-sm">
+                  <IoIosArrowForward size={20} />
                 </span>
-                 {/* Shine effect */}
-                <motion.div
-                  className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
-                  initial={{ x: "-100%" }}
-                  animate={{ x: ["-100%", "200%"] }}
-                  transition={{
-                    duration: 2.2,
-                    repeat: Infinity,
-                    repeatDelay: 3,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
-                </motion.div>
-              </motion.button>
-            </div>
+              </span>
+              {/* ✨ Shine Effekt */}
+              <motion.div
+                className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
+                initial={{ x: "-100%" }}
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{
+                  duration: 2.2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatDelay: 3,
+                  ease: "easeInOut",
+                }}
+              >
+                <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
+              </motion.div>
+            </motion.button>
           </motion.div>
         </div>
       </div>
