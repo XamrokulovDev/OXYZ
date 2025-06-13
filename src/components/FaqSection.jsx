@@ -2,45 +2,55 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const FaqSection = () => {
-  const [openItems, setOpenItems] = useState([0]);
-
+  const { t, i18n } = useTranslation();
+  const location = useLocation();
   const sectionRef = useRef(null);
+  const [openItems, setOpenItems] = useState([0]);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const isAboutPage = location.pathname === "/about";
+  const containerClass = `${isAboutPage ? "bg-[#F7F7F6] py-30" : "bg-white"}`;
 
   const faqData = [
-    {
-      id: 1,
-      question: "Сколько времени занимает доставка груза?",
-      answer:
-        "Сроки зависят от региона назначения, объёма и типа перевозки. Внутрироссийские доставки — от нескольких часов. Международные и межконтинентальные — от 1 дня до нескольких недель. Мы всегда заранее сообщаем ориентировочные сроки и держим вас в курсе на каждом этапе.",
-    },
-    {
-      id: 2,
-      question: "Можно ли отследить мой груз?",
-      answer:
-        "Да, мы предоставляем полную информацию о местонахождении вашего груза на каждом этапе доставки. Вы получите трек-номер и сможете отслеживать груз через наш сайт или мобильное приложение.",
-    },
-    {
-      id: 3,
-      question: "Какие грузы вы не перевозите?",
-      answer:
-        "Мы не перевозим опасные, запрещённые к транспортировке грузы, а также товары, требующие специальных разрешений без соответствующих документов. Полный список ограничений можно уточнить у наших менеджеров.",
-    },
-    {
-      id: 4,
-      question: "Вы помогаете с оформлением документов для международной доставки?",
-      answer:
-        "Да, наши специалисты помогут с оформлением всех необходимых документов для международной доставки, включая таможенные декларации, сертификаты и разрешения.",
-    },
-    {
-      id: 5,
-      question: "Что делать, если груз повреждён или утерян?",
-      answer:
-        "В случае повреждения или утери груза мы проводим расследование и компенсируем ущерб согласно условиям страхования. Обратитесь к нашему менеджеру для оформления претензии.",
-    },
-  ];
+  {
+    id: 1,
+    question_ru: "Сколько времени занимает доставка груза?",
+    question_uz: "Yuk yetkazib berish qancha vaqt oladi?",
+    answer_ru: "Сроки зависят от региона назначения, объёма и типа перевозки. Внутрироссийские доставки — от нескольких часов. Международные и межконтинентальные — от 1 дня до нескольких недель. Мы всегда заранее сообщаем ориентировочные сроки и держим вас в курсе на каждом этапе.",
+    answer_uz: "Yetkazib berish muddati manzil regioni, yuk hajmi va tashish turiga bog‘liq. Rossiya ichidagi yetkazmalar bir necha soatdan boshlanadi. Xalqaro va qit'alararo yetkazmalar esa 1 kundan bir necha haftagacha davom etadi. Biz sizga taxminiy muddatlarni oldindan aytamiz va har bosqichda xabardor qilib boramiz."
+  },
+  {
+    id: 2,
+    question_ru: "Можно ли отследить мой груз?",
+    question_uz: "Yukimni kuzatish mumkinmi?",
+    answer_ru: "Да, мы предоставляем полную информацию о местонахождении вашего груза на каждом этапе доставки. Вы получите трек-номер и сможете отслеживать груз через наш сайт или мобильное приложение.",
+    answer_uz: "Ha, biz yukingizning har bir bosqichdagi joylashuvi haqida to‘liq ma’lumot beramiz. Siz trek-raqam olasiz va uni saytimiz yoki mobil ilovamiz orqali kuzatishingiz mumkin bo‘ladi."
+  },
+  {
+    id: 3,
+    question_ru: "Какие грузы вы не перевозите?",
+    question_uz: "Qanday yuklarni tashimaysizlar?",
+    answer_ru: "Мы не перевозим опасные, запрещённые к транспортировке грузы, а также товары, требующие специальных разрешений без соответствующих документов. Полный список ограничений можно уточнить у наших менеджеров.",
+    answer_uz: "Biz xavfli, tashish taqiqlangan yuklar hamda maxsus ruxsatnomasiz hujjat talab qilinadigan tovarlarni tashimaymiz. To‘liq cheklovlar ro‘yxatini bizning menejerlarimizdan aniqlashtirishingiz mumkin."
+  },
+  {
+    id: 4,
+    question_ru: "Вы помогаете с оформлением документов для международной доставки?",
+    question_uz: "Xalqaro yetkazib berish uchun hujjatlarni rasmiylashtirishda yordam berasizlarmi?",
+    answer_ru: "Да, наши специалисты помогут с оформлением всех необходимых документов для международной доставки, включая таможенные декларации, сертификаты и разрешения.",
+    answer_uz: "Ha, mutaxassislarimiz xalqaro yetkazib berish uchun barcha zarur hujjatlarni, shu jumladan bojxona deklaratsiyalari, sertifikatlar va ruxsatnomalarni rasmiylashtirishda yordam beradi."
+  },
+  {
+    id: 5,
+    question_ru: "Что делать, если груз повреждён или утерян?",
+    question_uz: "Agar yuk shikastlansa yoki yo‘qolsa nima qilish kerak?",
+    answer_ru: "В случае повреждения или утери груза мы проводим расследование и компенсируем ущерб согласно условиям страхования. Обратитесь к нашему менеджеру для оформления претензии.",
+    answer_uz: "Agar yuk shikastlansa yoki yo‘qolsa, biz tekshiruv o‘tkazamiz va sug‘urta shartlariga muvofiq zarar o‘rnini qoplaymiz. Da’vo arizasini rasmiylashtirish uchun menejerimizga murojaat qiling."
+  },
+];
 
   const toggleItem = (index) => {
     setOpenItems((prev) =>
@@ -51,7 +61,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section className="md:my-30 my-15" ref={sectionRef}>
+    <section className={`${containerClass} md:my-30 my-15`} ref={sectionRef}>
       <motion.div
         className="container mx-auto px-4"
         initial={{ opacity: 0, y: 40 }}
@@ -60,9 +70,8 @@ const FaqSection = () => {
       >
         {/* Title */}
         <h2 className="text-[#111111] font-manrope font-[600] md:text-[48px] text-[28px] text-center">
-          Часто задаваемые вопросы
+          {t('faq.title')}
         </h2>
-
         {/* FAQ Items */}
         <div className="divide-y divide-[#CAC9C5]">
           {faqData.map((item, index) => (
@@ -83,7 +92,7 @@ const FaqSection = () => {
                     {String(item.id).padStart(2, "0")}
                   </span>
                   <h3 className="text-[#1A1A18] md:text-[24px] text-[20px] font-[600] font-manrope leading-[140%]">
-                    {item.question}
+                    {i18n.language === "uz" ? item.question_uz : item.question_ru}
                   </h3>
                 </div>
                 <motion.div
@@ -122,7 +131,7 @@ const FaqSection = () => {
                     <div className="pt-4 xs:pt-5 sm:pt-6 md:pt-8">
                       <div className="px-8 xs:px-10 sm:pl-12 md:px-16 lg:px-20">
                         <p className="md:text-[18px] text-[16px] font-manrope font-[400] leading-[140%]">
-                          {item.answer}
+                          {i18n.language === "uz" ? item.answer_uz : item.answer_ru}
                         </p>
                       </div>
                     </div>

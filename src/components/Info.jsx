@@ -1,44 +1,65 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+import { useTranslation } from "react-i18next"
 
 const Info = () => {
+  const { t, i18n } = useTranslation();
   const data = [
-    {
-      id: "01",
-      title: "Заявка",
-      description:
-        "Вы оставляете заявку на перевозку — в любом удобном формате: по телефону, мессенджеру (телеграмм или ватсап), email или через сайт. Уточняем ключевые параметры: тип груза, маршрут, объем, сроки, требования (температура, упаковка и др.).",
-    },
-    {
-      id: "02",
-      title: "Расчёт стоимости",
-      description:
-        "На основе маршрута, типа груза и сезонных факторов мы рассчитываем стоимость. У нас нет шаблонных ставок — каждый груз индивидуален. Цена прозрачная, без скрытых комиссий и «всплывающих» доплат.",
-    },
-    {
-      id: "03",
-      title: "Оформление документов",
-      description: "После согласования условий мы оформляем: заявку и договор",
-    },
-    {
-      id: "04",
-      title: "Организация перевозки",
-      description:
-        "Мы подбираем оптимальный транспорт (рефрижератор или тент), согласовываем все детали с грузоотправителем. Наши логисты контролируют процесс на каждом этапе.",
-    },
-    {
-      id: "05",
-      title: "Отслеживание груза",
-      description:
-        'Вы получаете актуальную информацию о статусе груза: от момента загрузки до доставки; с подтверждением на каждом этапе. Мы на связи 24/7 — без ожиданий и "перезвоните позже".',
-    },
-    {
-      id: "06",
-      title: "Доставка и отчёт",
-      description:
-        "После выгрузки вы получаете подтверждение доставки, все необходимые документы и закрывающий пакет. Вы уверены в результате — и можете спокойно планировать следующие поставки.",
-    },
-  ]
+  {
+    id: "01",
+    title_ru: "Заявка",
+    title_uz: "Buyurtma",
+    description_ru:
+      "Вы оставляете заявку на перевозку — в любом удобном формате: по телефону, мессенджеру (телеграмм или ватсап), email или через сайт. Уточняем ключевые параметры: тип груза, маршрут, объем, сроки, требования (температура, упаковка и др.).",
+    description_uz:
+      "Siz yuk tashish bo‘yicha buyurtma qoldirasiz — istalgan qulay usulda: telefon, messenjer (Telegram yoki WhatsApp), email yoki sayt orqali. Biz esa asosiy parametrlarni aniqlab olamiz: yuk turi, yo‘nalish, hajmi, muddati, talablar (harorat, qadoqlash va boshqalar)."
+  },
+  {
+    id: "02",
+    title_ru: "Расчёт стоимости",
+    title_uz: "Narxni hisoblash",
+    description_ru:
+      "На основе маршрута, типа груза и сезонных факторов мы рассчитываем стоимость. У нас нет шаблонных ставок — каждый груз индивидуален. Цена прозрачная, без скрытых комиссий и «всплывающих» доплат.",
+    description_uz:
+      "Yo‘nalish, yuk turi va mavsumiy omillarga asoslanib, biz narxni hisoblab chiqamiz. Bizda shablon narxlar yo‘q — har bir yuk individual. Narx shaffof, yashirin komissiyalar va kutilmagan to‘lovlarsiz."
+  },
+  {
+    id: "03",
+    title_ru: "Оформление документов",
+    title_uz: "Hujjatlarni rasmiylashtirish",
+    description_ru:
+      "После согласования условий мы оформляем: заявку и договор",
+    description_uz:
+      "Shartlar kelishilganidan so‘ng, biz buyurtma va shartnomani rasmiylashtiramiz."
+  },
+  {
+    id: "04",
+    title_ru: "Организация перевозки",
+    title_uz: "Yuk tashishni tashkil qilish",
+    description_ru:
+      "Мы подбираем оптимальный транспорт (рефрижератор или тент), согласовываем все детали с грузоотправителем. Наши логисты контролируют процесс на каждом этапе.",
+    description_uz:
+      "Biz eng mos transportni tanlaymiz (muzlatgichli yoki tentli mashina), yuk jo‘natuvchi bilan barcha tafsilotlarni kelishib olamiz. Bizning logistlar har bir bosqichni nazorat qilishadi."
+  },
+  {
+    id: "05",
+    title_ru: "Отслеживание груза",
+    title_uz: "Yukni kuzatish",
+    description_ru:
+      'Вы получаете актуальную информацию о статусе груза: от момента загрузки до доставки; с подтверждением на каждом этапе. Мы на связи 24/7 — без ожиданий и "перезвоните позже".',
+    description_uz:
+      "Yuk holati haqida doimiy yangilangan ma’lumot olasiz: yuklanganidan tortib yetkazib berilguncha — har bir bosqichda tasdiq bilan. Biz 24/7 aloqadamiz — kutishlarsiz va \"keyinroq qo‘ng‘iroq qilamiz\" degan gaplarsiz."
+  },
+  {
+    id: "06",
+    title_ru: "Доставка и отчёт",
+    title_uz: "Yetkazib berish va hisobot",
+    description_ru:
+      "После выгрузки вы получаете подтверждение доставки, все необходимые документы и закрывающий пакет. Вы уверены в результате — и можете спокойно планировать следующие поставки.",
+    description_uz:
+      "Yuk tushirilgach, siz yetkazib berilganligi bo‘yicha tasdiq, barcha kerakli hujjatlar va yopuvchi to‘plamni olasiz. Siz natijaga ishonasiz — va keyingi jo‘natmalarni bemalol rejalashtirishingiz mumkin."
+  }
+]
 
   const [dataList, setDataList] = useState(data)
   const [activeItem, setActiveItem] = useState(1)
@@ -77,13 +98,10 @@ const Info = () => {
         {/* CHAP PANEL */}
         <div className="flex flex-col gap-4 sticky top-20 h-fit max-md:relative max-md:w-[100vw] w-full p-2 max-md:top-0 max-md:mb-10 max-lg:relative max-lg:mb-10 max-xl:relative max-xl:mb-20">
           <h1 className="max-md:w-[95%] font-[600] font-manrope md:text-[40px] text-[28px] leading-[120%] text-[#1A1A18]">
-            Прозрачный процесс — <br /> предсказуемый результат
+            {t('info.title_1')} <br /> {t('info.title_2')}
           </h1>
           <p className="max-md:w-[90%] md:text-[20px] text-[16px] font-[400] font-manrope leading-[140%] text-[#1A1A18] p-2">
-            Мы ценим ваше время и стремимся к максимальной  эффективности. Поэтому каждый проект строим по чёткой{" "}
-             системе: от первого запроса до финальной сдачи. Ни одного  лишнего шага — только то, что
-            действительно работает. 
-            Ознакомьтесь с этапами сотрудничества.
+            {t('info.description')}
           </p>
         </div>
         {/* O'NG PANEL */}
@@ -129,7 +147,7 @@ const Info = () => {
                         activeItem === item.id ? "text-white" : "text-[#1A1A18]"
                       }`}
                     >
-                      {item.title}
+                      {i18n.language === "uz" ? item.title_uz : item.title_ru}
                     </h2>
                   </div>
                   <p
@@ -137,9 +155,8 @@ const Info = () => {
                       activeItem === item.id ? "text-[#FFC246]" : "text-[#6B7280]"
                     }`}
                   >
-                    {item.description}
+                    {i18n.language === "uz" ? item.description_uz : item.description_ru}
                   </p>
-                  {/* Decorative element */}
                 </motion.div>
               </div>
             ))}

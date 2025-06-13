@@ -3,8 +3,10 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import map from "../assets/map.png";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
@@ -38,7 +40,7 @@ const HeroSection = () => {
           transition={{ duration: 1 }}
           className="font-manrope md:text-[48px] text-[28px] leading-[120%] font-[600]"
         >
-          Ваше спокойствие — наша работа
+          {t('hero_section.hero_title')}
         </motion.h1>
 
         <motion.p
@@ -47,9 +49,9 @@ const HeroSection = () => {
           transition={{ delay: 0.3, duration: 1 }}
           className="xl:w-[50%] font-[400] font-manrope md:text-[20px] text-[16px] leading-[140%] mt-3"
         >
-          Сделать международную логистику понятной, надёжной и спокойной.
+          {t('hero_section.hero_description_1')}
           <br className="hidden xs:block" />
-          Чтобы вы могли доверить нам груз — и не волноваться.
+          {t('hero_section.hero_description_2')}
         </motion.p>
 
         <motion.div
@@ -63,7 +65,7 @@ const HeroSection = () => {
             <motion.button
               className="relative cursor-pointer bg-orange-500 group-hover:bg-orange-600 transition-all duration-300 text-white font-[400] p-2 pl-7 rounded-[8px] flex items-center gap-3 overflow-hidden md:text-[20px] text-[16px] leading-[100%]"
             >
-              <span>Узнать больше о нас</span>
+              <span>{t('hero_section.hero_button')}</span>
               <span className="bg-white text-orange-500 group-hover:text-orange-600 transition-all duration-300 p-4 rounded-md">
                 <IoIosArrowForward size={20} />
               </span>

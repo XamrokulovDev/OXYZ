@@ -1,7 +1,118 @@
 {
-    "global": {
-        "menu":"Menyu",
-        "close":"Yopish",
-        "button":"Konsultatsiya oling"
-    }
+  "global": {
+    "menu": "Menyu",
+    "close": "Yopish",
+    "button": "Konsultatsiya olish"
+  },
+  "schema": {
+      "header": {
+           "home": "Bosh sahifa",
+           "about": "Biz haqimizda",
+           "services": "Xizmatlar",
+           "news": "Yangiliklar",
+           "contact": "Kontaktlar"
+      }
+  }, 
+  "header": {
+    "title_1": "OXYZ – ishonsa bo‘ladigan xalqaro logistika,",
+    "title_2": "unga tayanishingiz mumkin",
+    "description_1": "Biz — xalqaro yuk tashish bilan bog‘liq barcha ishlarni",
+    "description_2": "o‘z zimmasiga oladigan kompaniyamiz,",
+    "description_3": "siz esa bemalol biznesingiz bilan shug‘ullanishingiz mumkin."
+  },
+  "hero_section": {
+    "hero_title": "Sizning xotirjamligingiz — bizning ishimiz",
+    "hero_description_1": "Xalqaro logistika jarayonini tushunarli, ishonchli va xotirjam qilish.",
+    "hero_description_2": "Shunda yukni bizga topshirib, aslo xavotir olmaysiz.",
+    "hero_button": "Biz haqimizda batafsil"
+  },
+  "form": {
+    "message_1": "Qayerdan maydoni toʻldirilishi shart",
+    "message_2": "Kamida 2 ta belgi",
+    "message_3": "Qayerga maydoni toʻldirilishi shart",
+    "message_4": "Kamida 2 ta belgi",
+    "message_5": "Yuboruvchi va qabul qiluvchi joylar bir xil bo‘lishi mumkin emas",
+    "message_6": "Yuk turini koʻrsating",
+    "message_7": "Kamida 2 ta belgi",
+    "message_8": "Yuk ogʻirligini koʻrsating",
+    "message_9": "Toʻgʻri ogʻirlikni kiriting",
+    "message_10": "Transport turini tanlang",
+    "message_11": "Kamida 2 ta belgi",
+    "message_12": "Ismingizni kiriting",
+    "message_13": "Ism kamida 2 ta belgi bo‘lishi kerak",
+    "message_14": "Ism faqat harf, bo‘sh joy, chiziqcha va nuqtalardan iborat bo‘lishi mumkin",
+    "message_15": "Telefon raqamingizni kiriting",
+    "message_16": "Telefon raqami 9 ta raqamdan iborat bo‘lishi kerak",
+    "message_17": "Telefon raqami faqat raqamlardan iborat bo‘lishi kerak",
+    "message_18": "Operator kodi noto‘g‘ri",
+    "message_19": "So‘rov muvaffaqiyatli yuborildi!",
+    "media_title": "So‘rov qoldiring va yukingizni yetkazish narxini hisoblab oling",
+    "title_1": "So‘rov qoldiring va hisob-kitobni oling",
+    "title_2": "yukingizni yetkazish uchun",
+    "label_1": "Qayerdan",
+    "label_2": "Qayerga",
+    "label_3": "Yuk og‘irligi",
+    "label_4": "Transport turi",
+    "placeholder_1": "Toshkent",
+    "placeholder_2": "Moskva",
+    "placeholder_3": "Sement",
+    "placeholder_4": "10 tonna",
+    "placeholder_5": "Fura",
+    "submit": "Keyingi",
+    "cancel": "Ortga",
+    "location": "Manzil",
+    "box": "Yuk",
+    "box_whats": "Qanday yuk",
+    "saller": "Buyurtmachi",
+    "name": "Ism",
+    "type_name": "Ismingizni kiriting",
+    "phone": "Telefon raqami",
+    "message_20": "Narxni hisoblash"
+  },
+  "us": {
+    "title": "Nega aynan biz?",
+    "description": "Ariza qoldiring va yukingizni yetkazib berish hisob-kitobini oling"
+  },
+  "services": {
+    "title": "Bizning xizmatlarimiz",
+    "description": "Ariza qoldiring va yukingizni yetkazib berish hisob-kitobini oling"
+  },
+  "statistics": {
+    "title": "OXYZ kompaniyasi haqida",
+    "description_1": "Sizning xotirjamligingiz — bizning ishimiz. Biz yuk tashish bilan shug‘ullanuvchi logistika kompaniyasimiz, lekin shunchaki yuk tashimaymiz, balki sizning biznesingiz uchun tushunarli, halol va ishonchli jarayonlarni yaratamiz.",
+    "description_2": "2022-yildan beri biz kompaniyalarga Yevropa va MDH davlatlaridan yuklarini muammosiz va o‘z vaqtida yetkazib berishda yordam beramiz. Bizning asosiy yo‘nalishimiz — tentalangan transport orqali yuk tashish: uskunalar, texnika, xalq iste’moli mollari va hokazo."
+  },
+  "info": {
+    "title_1": "Shaffof jarayon — ",
+    "title_2": "kutilgan natija",
+    "description": "Biz sizning vaqtingizni qadrlaymiz va maksimal samaradorlikka intilamiz. Shu sababli har bir loyihani aniq tizim asosida quramiz: birinchi so‘rovdan tortib yakuniy topshirilguncha. Ortiqcha bosqichlar yo‘q — faqat haqiqatan ishlaydigan narsa. Hamkorlik bosqichlari bilan tanishing."
+  },
+  "cards": {
+    "title": "Yangiliklar va yangilanishlar",
+    "description_1": "Kompaniyaning muhim voqealari, yutuqlari",
+    "description_2": "va yangi loyihalari haqida kuzatib boring — eng muhimlari bir joyda",
+    "button": "Maqolani o'qish"
+  },
+  "faq": {
+    "title": "Ko‘p so‘raladigan savollar"
+  },
+  "contact": {
+    "message_1": "Iltimos, barcha maydonlarni to‘ldiring.",
+    "message_2": "Iltimos, shartlarga rozilik bildiring.",
+    "title": "Kontaktlar",
+    "location": "Yuridik manzil:",
+    "map": "Toshkent shahri, Chilonzor tumani, 3-CHARX Kamolon MFY, Muqumiy ko‘chasi, 178-uy",
+    "description_1": "Bir kun ichida javob beramiz,",
+    "description_2": "formani to‘ldiring",
+    "check": "Shaxsiy ma'lumotlarimni qayta ishlashga roziman",
+    "button": "Yuborish"
+  },
+  "footer": {
+    "title": "Savollaringiz bormi?",
+    "description": "OXYZ — Sizning xotirjamligingiz, bizning ishimiz.",
+    "navigate": "Navigatsiya",
+    "years": "OXYZ. Barcha huquqlar himoyalangan.",
+    "description_1": "Foydalanish shartlari",
+    "description_2": "Maxfiylik siyosati"
+  }
 }

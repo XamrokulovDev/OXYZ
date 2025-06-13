@@ -3,34 +3,42 @@ import office from '../assets/office.jpg'
 import xujjat from '../assets/xujjat.jpg'
 import { MdArrowOutward } from "react-icons/md"
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 const Services = () => {
+  const { t, i18n } = useTranslation();
+
   const servicesData = [
-    {
-      image: ship,
-      title: 'Организация международных перевозок',
-      description: 'Полная логистика грузов по направлениям Европа — СНГ — Китай. Рефрижераторы для скоропортящихся товаров, тентованные авто для оборудования и нетемпературных грузов. Контроль 24/7, прозрачные сроки, документы под ключ.',
-      delay: 0,
-    },
-    {
-      image: office,
-      title: 'Консультирование по ВЭД',
-      description: 'Помогаем сориентироваться во внешнеэкономической деятельности: контракты, Incoterms, логистические риски и оптимизация расходов. Говорим на языке бизнеса, а не бюрократии.',
-      delay: 0.2,
-    },  
-    {
-      image: xujjat,
-      title: 'Таможенное оформление',
-      description: 'Организуем корректное и быстрое прохождение таможни: документы, расчёт платежей, взаимодействие с брокерами. Без задержек, лишних расходов и штрафов.',
-      delay: 0.4,
-    },
-  ];
+  {
+    image: ship,
+    title_ru: 'Организация международных перевозок',
+    title_uz: "Xalqaro yuk tashishlarni tashkil etish",
+    description_ru: 'Полная логистика грузов по направлениям Европа — СНГ — Китай. Рефрижераторы для скоропортящихся товаров, тентованные авто для оборудования и нетемпературных грузов. Контроль 24/7, прозрачные сроки, документы под ключ.',
+    descrirption_uz: "Yevropa — MDH — Xitoy yo‘nalishlari bo‘yicha yuklarni to‘liq logistika xizmati. Tez buziladigan mahsulotlar uchun sovitkichli transportlar, uskunalar va haroratga bog‘liq bo‘lmagan yuklar uchun tentalik avtomobillar. 24/7 nazorat, ochiq muddatlar, barcha hujjatlar tayyor holda.",
+    delay: 0,
+  },
+  {
+    image: office,
+    title_ru: 'Консультирование по ВЭД',
+    title_uz: "Tashqi iqtisodiy faoliyat bo‘yicha maslahatlar",
+    description_ru: 'Помогаем сориентироваться во внешнеэкономической деятельности: контракты, Incoterms, логистические риски и оптимизация расходов. Говорим на языке бизнеса, а не бюрократии.',
+    descrirption_uz: "Tashqi iqtisodiy faoliyatda yo‘nalishni topishda yordam beramiz: shartnomalar, Incoterms, logistika xatarlari va xarajatlarni optimallashtirish. Biznes tilida gaplashamiz, byurokratiya emas.",
+    delay: 0.2,
+  },  
+  {
+    image: xujjat,
+    title_ru: 'Таможенное оформление',
+    title_uz: "Bojxona rasmiylashtiruvi",
+    description_ru: 'Организуем корректное и быстрое прохождение таможни: документы, расчёт платежей, взаимодействие с брокерами. Без задержек, лишних расходов и штрафов.',
+    descrirption_uz: "Bojxona nazoratidan to‘g‘ri va tez o‘tishni ta’minlaymiz: hujjatlar, to‘lov hisob-kitoblari, brokerlar bilan aloqalar. Ortiqcha kechikishlarsiz, qo‘shimcha xarajatlarsiz va jarimasiz.",
+    delay: 0.4,
+  },
+];
 
   return (
     <div className='container mx-auto px-4 py-20'>
-      <h1 className='text-[28px] md:text-[48px] font-[600] text-[#1A1A18] text-center leading-[120%]'>Наши услуги</h1>
-      <p className='text-[#1A1A18] font-[400] text-[16px] md:text-[20px] text-center leading-[140%] mt-2'>Оставьте заявку и получите расчет доставки вашего груза</p>
-
+      <h1 className='text-[28px] md:text-[48px] font-[600] text-[#1A1A18] text-center leading-[120%]'>{t('services.title')}</h1>
+      <p className='text-[#1A1A18] font-[400] text-[16px] md:text-[20px] text-center leading-[140%] mt-2'>{t('services.description')}</p>
       <section className='mt-10 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center transition-all'>
         {servicesData.map((service, index) => (
           <motion.div
@@ -53,11 +61,11 @@ const Services = () => {
             <div className="absolute bottom-0 left-0 w-full bg-[#F07C0000]/40 backdrop-blur-sm text-white px-4 py-3 z-20 transition-all duration-500">
               <div className="transition-all duration-500 transform group-hover:-translate-y-3">
                 <h1 className="text-[20px] md:text-[32px] font-manrope font-[600] leading-[120%] whitespace-pre-line line-clamp-2 min-h-[64px]">
-                  {service.title}
+                  {i18n.language === "uz" ? service.title_uz : service.title_ru}
                 </h1>
               </div>
               <p className="text-[18px] font-manrope leading-[140%] font-[500] opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-700 ease-in-out mt-2">
-                {service.description}
+                {i18n.language === "uz" ? service.descrirption_uz : service.description_ru}
               </p>
             </div>
           </motion.div>

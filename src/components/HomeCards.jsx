@@ -6,10 +6,10 @@ import { motion } from 'framer-motion';
 import image from "../assets/NewCardImg.svg";
 import {NavLink} from 'react-router-dom'
 import {useEffect} from 'react'
+import { useTranslation } from 'react-i18next';
 
 const HomeCards = () => {
-  
-
+  const { t } = useTranslation();
   const news = [
     {
       id: 1,
@@ -51,11 +51,10 @@ const HomeCards = () => {
           className="text-center"
         >
           <h1 className="text-[#1A1A18] md:text-[48px] leading-[120%] font-manrope font-[600]">
-            Новости и обновления
+            {t('cards.title')}
           </h1>
           <p className="text-[#1A1A18] md:text-[20px] font-manrope leading-[140%] font-[400] my-5">
-            Следите за важными событиями, достижениями компании<br />
-            и новыми проектами — всё самое важное в одном месте
+            {t('cards.description_1')} <br /> {t('cards.description_2')}
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10">

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion";
 import {
   FaWhatsapp,
   FaTelegramPlane,
@@ -11,13 +11,19 @@ import logo from "../assets/Group 9.svg";
 import { NavbarList } from "../../data/data";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ModalForm from "./ModalForm";
 
 const Footer = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, threshold: 0.2 });
   const controls = useAnimation();
-  const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const inView = useInView(ref, { once: true, threshold: 0.2 });
+  const years = new Date().getFullYear();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
   
 
   useEffect(() => {
@@ -40,6 +46,7 @@ const Footer = () => {
   };
 
   return (
+    <>
     <motion.footer
       ref={ref}
       className="bg-[#181716] text-white"
@@ -54,10 +61,11 @@ const Footer = () => {
           </h1>
           <div className="relative inline-block group">
             <motion.button
+              onClick={handleOpenModal}
               className="relative bg-white text-orange-500 font-semibold rounded-md flex items-center overflow-hidden cursor-pointer gap-3 pl-7 p-2"
             >
-              <span className="flex items-center text-[#1A1A18] font-[400] font-manrope text-[20px] leading-[100%] gap-3">
-                Получить консультацию
+              <span className="flex items-center text-[#1A1A18] font-[400] font-manrope text-[20px] max-xl:text-[16px] leading-[100%] gap-3">
+                {t('global.button')}
                 <span className="bg-orange-500 group-hover:bg-orange-600 transition-all duration-300 text-white p-4 text-xl rounded-sm">
                   <IoIosArrowForward size={20} />
                 </span>
@@ -90,8 +98,8 @@ const Footer = () => {
             <NavLink to="/" className="block mb-4">
               <img src={logo} alt="OXYZ" className="h-10" />
             </NavLink>
-            <p className="text-white/50 font-manrope font-[400] text-[20px] mb-4">
-              OXYZ - Ваше спокойствие, <br /> наша работа.
+            <p className="w-[300px] text-white/50 font-manrope font-[400] text-[20px] mb-4">
+              {t('footer.description')}
             </p>
             <div className="flex space-x-2">
               <a
@@ -127,7 +135,7 @@ const Footer = () => {
 
           <div>
             <h3 className="text-[28px] text-white font-[600] font-manrope mb-4">
-              Навигация
+              {t('footer.navigate')}
             </h3>
             <ul className="flex flex-col items-start space-y-3">
               {NavbarList?.map((item, i) => (
@@ -157,16 +165,14 @@ const Footer = () => {
 
           <div>
             <h3 className="text-[28px] text-white font-[600] font-manrope mb-4">
-              Контакты
+              {t('contact.title')}
             </h3>
-            <ul className="text-white/50 leading-[100%] text-[18px] font-[400] font-manrope space-y-4">
+            <ul className="text-white/50 leading-[120%] text-[18px] font-[400] font-manrope space-y-4">
               <a href={`tel:+998-99-536-57-47`} target="_blank" className="block">+998-99-536-57-47</a>
               <a href={`tel:+998-90-823-22-32`} target="_blank" className="block">+998-90-823-22-32</a>
               <a href={`ufdworldservice@gmail.com`} target="_blank" className="block">ufdworldservice@gmail.com</a>
-              <li>
-                г. Ташкент, Чиланзарский р., <br />
-                3-ЧАРХ Камолон МФЙ, <br />
-                улица Мукумий, 178-дом
+              <li className="w-[260px]">
+                {t('contact.map')}
               </li>
             </ul>
           </div>
@@ -191,25 +197,41 @@ const Footer = () => {
         variants={variants}
       >
         <div className="container mx-auto flex max-md:flex-col justify-between items-center gap-5">
-          <div>© 2025 OXYZ. Все права защищены.</div>
+          <div>© {years} {t('footer.years')}</div>
           <div className="flex flex-col md:flex-row md:mt-0 items-center">
             <a
               href="#"
               className="hover:underline hover:-translate-y-[1px] transition duration-300"
             >
-              Условия использования
+              {t('footer.description_1')}
             </a>
             <span className="hidden md:inline mx-1">|</span>
             <a
               href="#"
               className="hover:underline hover:-translate-y-[1px] transition duration-300"
             >
-              Политика конфиденциальности
+              {t('footer.description_2')}
             </a>
           </div>
         </div>
       </motion.div>
     </motion.footer>
+    <AnimatePresence>
+      {isModalOpen && (
+         <motion.div
+          key="overlay"
+          className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/30 overflow-y-auto max-md:px-5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={handleCloseModal} 
+         >
+         <ModalForm onClose={handleCloseModal} />
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 };
 
