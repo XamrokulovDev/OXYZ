@@ -30,7 +30,7 @@ const Header = () => {
     <>
       <div 
         ref={ref}
-        className='bg-[url("/src/assets/bg.png")] bg-cover bg-center m-[10px] sm:h-[800] h-[900px] rounded-xl relative flex items-center overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20'
+        className='bg-[url("/src/assets/bg.png")] min-[1230px]:bg-[url("/src/assets/Hero.png")] bg-cover bg-center m-[10px] sm:h-[800] h-[900px] rounded-xl relative flex items-center overflow-hidden px-4 sm:px-6 md:px-10 lg:px-20'
       >
         <div className="w-full h-full absolute top-0 left-0 bg-[#00000099]/60"></div>
         <div className="text-white space-y-6 w-full sm:w-[90%] md:w-[80%] lg:max-w-[600px]">

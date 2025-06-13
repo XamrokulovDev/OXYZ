@@ -75,7 +75,7 @@ const Services = () => {
                 isEven ? '' : 'flex-row-reverse'
               }`}
             >
-              <div className='max-md:px-4 xl:w-[40%]'>
+              <div className='max-md:px-4 lg:w-[40%]'>
                 <h2 className='font-[600] text-[36px] leading-[120%] font-manrope mb-[20px] max-md:mb-[10px] max-md:text-[28px] max-lg:text-[30px] max-xl:text-[32px]'>
                   {i18n.language === "uz" ? service.title_uz : service.title_ru}
                 </h2>
@@ -112,7 +112,7 @@ const Services = () => {
                   </div>
                 </div>
               </div>
-              <div className='xl:w-[40%] h-full max-md:w-full max-lg:w-full max-md:px-5'>
+              <div className='lg:w-[50%] 2xl:w-[40%] h-full max-md:w-full max-lg:w-full max-md:px-5'>
                 <img 
                   src={service.image} 
                   alt="servives"

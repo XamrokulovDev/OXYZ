@@ -7,3 +7,23 @@
 html {
     overflow-x: hidden !important;
 }
+
+ @media (min-width: 640px) {
+    .container { max-width: 600px; }
+  }
+
+  @media (min-width: 730px) {
+    .container { max-width: 730px; }
+  }
+
+  @media (min-width: 980px) {
+    .container { max-width: 85vw !important; }
+  }
+
+  @media (min-width: 1180px) {
+    .container { max-width: 85vw !important; }
+  }
+
+  @media (min-width: 1320px) {
+    .container { max-width: 80vw !important; }
+  }

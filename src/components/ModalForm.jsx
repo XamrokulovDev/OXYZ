@@ -36,7 +36,7 @@ const ModalForm = ({ onClose }) => {
   };
   return (
     <div 
-      className="w-[550px] bg-white rounded-[14px] relative max-md:my-30 p-5 lg:p-10"
+      className="w-[550px] bg-white rounded-[14px] relative max-md:my-30 p-5 sm:p-10"
       onClick={(e) => e.stopPropagation()}
     >
         <button 

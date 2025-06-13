@@ -118,7 +118,7 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
             />
             <motion.div
-              className="sm:w-[500px] w-full h-full overflow-y-auto pb-10 bg-white fixed top-0 right-0 z-[99] shadow-lg"
+              className="sm:w-[500px] w-full h-screen pb-10 bg-white fixed top-0 right-0 z-[99]"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -148,7 +148,7 @@ const Navbar = () => {
                         to={item.link}
                         onClick={() => setIsOpen(false)}
                         className={({ isActive }) =>
-                          `sm:text-[36px] text-[25px] font-[700] font-manrope leading-[100%] group-hover:text-[#E5E4E2] hover:text-[#1A1A18] transition-all duration-300 ${
+                          `sm:text-[36px] [@media(max-height:900px)]:text-[25px] text-[25px] font-[700] font-manrope leading-[100%] hover:text-[#E5E4E2] transition-all duration-300 ${
                             isActive ? "text-[#F07C00]" : "text-[#1A1A18]"
                           }`
                         }
@@ -162,23 +162,23 @@ const Navbar = () => {
                   ))}
                 </ul>
               </div>
-              <div className="sm:mt-45 mt-30 pr-10">
+              <div className="sm:mt-45 [@media(max-height:900px)]:mt-30 mt-30 pr-10">
                 <div className="flex items-center justify-end gap-2">
                   <span className="w-2 h-2 bg-[#00FF00] rounded-full"></span>
-                  <p className="font-manrope font-[400] sm:text-[24px] text-[18px] text-[#1A1A18] leading-[100%]">
+                  <p className="font-manrope font-[400] sm:text-[24px] [@media(max-height:900px)]:text-[18px] text-[18px] text-[#1A1A18] leading-[100%]">
                     Пн-Сб, с 9:00 до 18:00
                   </p>
                 </div>
                 <div className="flex flex-col items-end gap-2 mt-2">
                   <a
                     href={`tel:+99890-823-22-32`}
-                    className="font-manrope sm:font-[700] font-[600] sm:text-[32px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
+                    className="font-manrope sm:font-[700] font-[600] sm:text-[32px] [@media(max-height:900px)]:text-[25px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
                   >
                     +99890-823-22-32
                   </a>
                   <a
                     href={`tel:+99899-536-57-47`}
-                    className="font-manrope sm:font-[700] font-[600] sm:text-[32px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
+                    className="font-manrope sm:font-[700] font-[600] sm:text-[32px] [@media(max-height:900px)]:text-[25px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
                   >
                     +99899-536-57-47
                   </a>

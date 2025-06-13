@@ -42,11 +42,13 @@ const ContactPage = () => {
 
   return (
     <div className='container mx-auto px-4'>
-      <div className='py-25 flex flex-col lg:flex-row justify-between gap-10'>
+      <div className='flex flex-col xl:flex-row justify-between max-xl:items-center my-30 gap-10'>
         <motion.div 
           initial={{ opacity: 0, y: 50 }} 
           animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.6 }}>
+          transition={{ duration: 0.6 }}
+          className='w-full xl:w-[50%]'
+        >
           <div>
             <h1 className='font-manrope text-[#1A1A18] font-[600] text-[28px] sm:text-[40px] leading-[100%]'>{t('contact.title')}</h1>
           </div>
@@ -54,28 +56,28 @@ const ContactPage = () => {
             <div className='flex gap-2 my-10'>
               <BsTelephone className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-2'>{t('form.phone')}</h1>
+                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('form.phone')}</h1>
                 <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>+998-99-536-57-47</h1>
               </div>
             </div>
             <div className='flex gap-2 my-10'>
               <BsTelephone className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-2'>{t('form.phone')}</h1>
+                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('form.phone')}</h1>
                 <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>+998-90-823-22-32</h1>
               </div>
             </div>
             <div className='flex gap-2 my-8'>
               <IoMailOutline className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-2'>E-mail</h1>
+                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>E-mail</h1>
                 <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>ufdworldservice@gmail.com</h1>
               </div>
             </div>
             <div className='flex gap-2 my-8'>
               <GrLocation className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-2'>{t('contact.location')}</h1>
+                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('contact.location')}</h1>
                 <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>
                   {t('contact.map')}
                 </h1>
@@ -87,14 +89,13 @@ const ContactPage = () => {
           initial={{ opacity: 0, y: 50 }} 
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8 }}
-          className='w-full max-w-xl'>
-
-          <h1 className='font-manrope font-[600] text-[24px] sm:text-[40px] leading-[100%] mb-5'>
+          className='w-full lg:w-[615px]'>
+          <h1 className='font-manrope font-[600] text-[24px] sm:text-[40px] leading-[100%]'>
             {t('contact.description_1')} <br />{t('contact.description_2')}
           </h1>
-          <form onSubmit={handleSubmit} className='bg-[#F7F7F6] p-6 sm:p-10 rounded-lg'>
+          <form onSubmit={handleSubmit} className='w-full bg-[#F7F7F6] rounded-lg sm:p-10 mt-8 p-6'>
             <div className='mb-4'>
-              <label htmlFor="name" className="block text-sm sm:text-[16px] font-medium mb-3 font-manrope">
+              <label htmlFor="name" className="block text-[14px] sm:text-[16px] font-medium mb-3 font-manrope">
                 {t('form.name')}
               </label>
               <input
@@ -145,7 +146,7 @@ const ContactPage = () => {
             <button
               type="submit"
               disabled={!form.agree}
-              className={`w-full sm:w-[515px] h-[67px] text-[16px] sm:text-[20px] font-[400] font-manrope leading-[100%] rounded-md mt-5 transition 
+              className={`w-full h-[67px] text-[16px] sm:text-[20px] font-[400] font-manrope leading-[100%] rounded-md mt-5 transition 
                 ${form.agree 
                   ? 'bg-[#F07C00] text-[#FFFAEA] cursor-pointer' 
                   : 'bg-[#f5c84b] text-[#FFFAEA] opacity-50 cursor-not-allowed'

@@ -4,6 +4,7 @@ import xujjat from '../assets/xujjat.jpg'
 import { MdArrowOutward } from "react-icons/md"
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { NavLink } from 'react-router-dom'
 
 const Services = () => {
   const { t, i18n } = useTranslation();
@@ -49,6 +50,7 @@ const Services = () => {
             viewport={{ once: true }}
             className="group relative w-full h-[600px] max-sm:h-[400px] max-2xl:h-[450px] rounded-xl overflow-hidden cursor-pointer transition-all duration-500"
           >
+            <NavLink to="/services">
             <img
               src={service.image}
               alt="background"
@@ -69,6 +71,7 @@ const Services = () => {
                 {i18n.language === "uz" ? service.descrirption_uz : service.description_ru}
               </p>
             </div>
+            </NavLink>
           </motion.div>
         ))}
       </section>

@@ -23,7 +23,7 @@ const Header = () => {
 
   return (
     <motion.div
-      className="w-full h-[550px] max-md:h-[450px] p-3"
+      className="w-full h-[450px] max-md:h-[450px] p-3"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -44,7 +44,7 @@ const Header = () => {
           >
             <motion.h1
               title={pageTitle}
-              className="text-white font-manrope font-[700] text-[64px] leading-[110%] max-md:text-[40px]"
+              className="text-white font-manrope font-[700] text-[40px] md:text-[64px] leading-[110%]"
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -59,12 +59,12 @@ const Header = () => {
             >
               <NavLink
                 to="/"
-                className="text-white font-manrope font-[500] text-[20px] leading-[120%]"
+                className="text-white font-manrope font-[500] text-[16px] md:text-[20px] leading-[120%]"
               >
                 {t("schema.header.home")}
               </NavLink>
               <span className="text-white">/</span>
-              <span className="text-white/50 text-[20px] font-[500] leading-[120%] font-manrope">
+              <span className="text-white/50 text-[16px] md:text-[20px] font-[500] leading-[120%] font-manrope">
                 {pageTitle}
               </span>
             </motion.div>

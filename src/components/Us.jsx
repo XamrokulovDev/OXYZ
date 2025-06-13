@@ -61,11 +61,11 @@ const Us = () => {
 
   return (
     <div className={containerClass}>
-      <h1 className='text-[#1A1A18] text-[28px] md:text-[48px] font-[600] text-center leading-[120%]'>{t('us.title')}</h1>
-      <p className='font-[400] text-[#1A1A18] text-[18px] md:text-[20px] text-center mt-2'>
+      <h1 className='text-[#1A1A18] text-[28px] md:text-[48px] font-[600] text-center leading-[120%] px-4'>{t('us.title')}</h1>
+      <p className='font-[400] text-[#1A1A18] text-[18px] md:text-[20px] text-center px-4 mt-2'>
         {t('us.description')}
       </p>
-      <section className='container px-4 py-10 grid grid-cols-1 sm:grid-cols-2 gap-3 mx-auto mt-10'>
+      <section className='container px-4 py-10 grid grid-cols-1 lg:grid-cols-2 gap-3 mx-auto mt-10'>
         {cards.map((card, idx) => (
           <motion.div
             key={idx}

@@ -15,11 +15,7 @@ const HeroSection = () => {
   return (
     <section
       ref={ref}
-      className="container mx-auto flex flex-col items-center justify-center
-                min-h-[400px] xs:min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px] xl:min-h-[900px] 
-                py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 
-                px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
-                text-center relative bg-white"
+      className="container mx-auto flex flex-col items-center justify-center min-h-[400px] xs:min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[800px]bg-white relative my-15 md:my-20 lg:my-30"
     >
       {/* Background */}
       <div
@@ -29,21 +25,19 @@ const HeroSection = () => {
           src={map}
           alt="maping"
           loading="lazy"
-          className="w-full h-full max-sm:object-cover object-contain absolute top-0 left-0 opacity-30" 
+          className="w-full h-full max-lg:object-cover object-contain absolute top-0 left-0 opacity-30" 
         />
       </div>
-
       {/* Kontent */}
-      <div className="container mx-auto relative z-10 flex flex-col items-center">
+      <div className="container mx-auto relative z-10 flex flex-col items-center px-4">
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
-          className="font-manrope md:text-[48px] text-[28px] leading-[120%] font-[600]"
+          className="font-manrope md:text-[48px] text-[28px] leading-[120%] font-[600] max-md:text-center"
         >
           {t('hero_section.hero_title')}
         </motion.h1>
-
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
