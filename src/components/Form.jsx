@@ -223,14 +223,14 @@ const Form = () => {
           {isMobile || isTablet ? (
             <h1
               title="Оставьте заявку и получите расчет доставки вашего груза"
-              className="text-[28px] md:text-[36px] lg:text-[48px] font-[600] font-manrope leading-[120%]"
+              className="text-[28px] md:text-[36px] lg:text-[48px] font-[600] font-manrope leading-[120%] px-4"
             >
               {t("form.media_title")}
             </h1>
           ) : (
             <h1
               title="Оставьте заявку и получите расчет доставки вашего груза"
-              className="text-[28px] md:text-[36px] lg:text-[48px] font-[600] font-manrope leading-[120%]"
+              className="text-[28px] md:text-[36px] lg:text-[48px] font-[600] font-manrope leading-[120%] px-4"
             >
               {t("form.title_1")} <br /> {t("form.title_2")}
             </h1>

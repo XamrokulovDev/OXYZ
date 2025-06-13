@@ -168,9 +168,27 @@ const Footer = () => {
               {t('contact.title')}
             </h3>
             <ul className="text-white/50 leading-[120%] text-[18px] font-[400] font-manrope space-y-4">
-              <a href={`tel:+998-99-536-57-47`} target="_blank" className="block">+998-99-536-57-47</a>
-              <a href={`tel:+998-90-823-22-32`} target="_blank" className="block">+998-90-823-22-32</a>
-              <a href={`ufdworldservice@gmail.com`} target="_blank" className="block">ufdworldservice@gmail.com</a>
+              <a 
+                href={`tel:+998-99-536-57-47`} 
+                target="_blank" 
+                className="block"
+              >
+                +998-99-536-57-47
+              </a>
+              <a 
+                href={`tel:+998-90-823-22-32`} 
+                target="_blank" 
+                className="block"
+              >
+                +998-90-823-22-32
+              </a>
+              <a 
+                href={`ufdworldservice@gmail.com`} 
+                target="_blank" 
+                className="block"
+              >
+                ufdworldservice@gmail.com
+              </a>
               <li className="w-[260px]">
                 {t('contact.map')}
               </li>
@@ -191,7 +209,6 @@ const Footer = () => {
           </div>
         </motion.div>
       </motion.div>
-
       <motion.div
         className="bg-orange-500 text-white text-sm py-6 px-4 mt-[30px] flex flex-col md:flex-row justify-between items-center"
         variants={variants}

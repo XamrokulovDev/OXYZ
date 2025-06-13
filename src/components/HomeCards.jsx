@@ -67,11 +67,16 @@ const HomeCards = () => {
                 viewport={{ once: true }}
                 className="p-3 bg-white rounded-xl border-[1px] border-gray-200 hover:shadow-lg transition-shadow"
               >
-                <img src={item.img} className="w-full rounded-lg mb-4" alt="news" />
-                <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">
+                <img 
+                  src={item.img} 
+                  alt="news"
+                  loading='lazy'
+                  className="w-full rounded-lg mb-4" 
+                />
+                <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope max-lg:line-clamp-2 mb-3">
                   {item.title}
                 </h2>
-                <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-12">
+                <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] line-clamp-4 mb-12">
                   {item.text}
                 </p>
                 <div className="flex justify-between items-center">
@@ -131,7 +136,7 @@ const HomeCards = () => {
                       className="p-4 bg-white rounded-xl border border-gray-300 w-full"
                     >
                       <img src={item.img} className="w-full rounded-lg mb-4" alt="news" />
-                      <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope mb-3">
+                      <h2 className="text-[#1A1A18] text-[24px] leading-[120%] font-[600] font-manrope line-clamp-2 mb-3">
                         {item.title}
                       </h2>
                       <p className="text-[#A7A6A1] text-[16px] font-[400] font-manrope leading-[140%] mb-6">

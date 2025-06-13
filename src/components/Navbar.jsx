@@ -67,7 +67,7 @@ const Navbar = () => {
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 bg-[#00FF00] rounded-full"></span>
                 <p className="font-manrope font-[400] text-[14px] text-white/80 leading-[100%]">
-                  Пн-Сб, с 9:00 до 18:00
+                  {t('global.work')}
                 </p>
               </div>
               <a 
@@ -171,13 +171,13 @@ const Navbar = () => {
                 </div>
                 <div className="flex flex-col items-end gap-2 mt-2">
                   <a
-                    href={`tel:+998900302423`}
+                    href={`tel:+99890-823-22-32`}
                     className="font-manrope sm:font-[700] font-[600] sm:text-[32px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
                   >
                     +99890-823-22-32
                   </a>
                   <a
-                    href={`tel:+998900302423`}
+                    href={`tel:+99899-536-57-47`}
                     className="font-manrope sm:font-[700] font-[600] sm:text-[32px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
                   >
                     +99899-536-57-47
