@@ -70,9 +70,12 @@ const Navbar = () => {
                   Пн-Сб, с 9:00 до 18:00
                 </p>
               </div>
-              <p className="text-white font-manrope font-[700] text-[20px] leading-[100%]">
+              <a 
+                href={`tel:+99890-823-22-32`}
+                className="text-white font-manrope font-[700] text-[20px] leading-[100%]"
+              >
                 +99890-823-22-32
-              </p>
+              </a>
             </motion.div>
             <div className="flex items-center gap-1">
               <Translation />
@@ -103,7 +106,6 @@ const Navbar = () => {
           </div>
         </div>
       </motion.nav>
-
       {/* Sidebar with overlay */}
       <AnimatePresence>
         {isOpen && (
@@ -133,7 +135,6 @@ const Navbar = () => {
                 </p>
                 <IoClose size={21} />
               </button>
-
               <div className="sm:mt-50 mt-40 pr-10">
                 <ul className="group flex flex-col items-end gap-5">
                   {NavbarList?.map((item, i) => (
@@ -161,7 +162,6 @@ const Navbar = () => {
                   ))}
                 </ul>
               </div>
-
               <div className="sm:mt-45 mt-30 pr-10">
                 <div className="flex items-center justify-end gap-2">
                   <span className="w-2 h-2 bg-[#00FF00] rounded-full"></span>
