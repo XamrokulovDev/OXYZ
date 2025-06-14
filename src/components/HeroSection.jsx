@@ -34,7 +34,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
-          className="font-manrope md:text-[48px] text-[28px] leading-[120%] font-[600] max-md:text-center"
+          className="font-manrope md:text-[48px] text-[28px] leading-[120%] font-[600] text-center"
         >
           {t('hero_section.hero_title')}
         </motion.h1>
@@ -42,7 +42,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 1 }}
-          className="xl:w-[50%] font-[400] font-manrope md:text-[20px] text-[16px] leading-[140%] mt-3"
+          className="xl:w-[50%] font-[400] font-manrope md:text-[20px] text-[16px] leading-[140%] text-center mt-3"
         >
           {t('hero_section.hero_description_1')}
           <br className="hidden xs:block" />

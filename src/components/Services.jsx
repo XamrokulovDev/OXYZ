@@ -37,7 +37,7 @@ const Services = () => {
 ];
 
   return (
-    <div className='container mx-auto px-4 py-20'>
+    <div className='container mx-auto px-4'>
       <h1 className='text-[28px] md:text-[48px] font-[600] text-[#1A1A18] text-center leading-[120%]'>{t('services.title')}</h1>
       <p className='text-[#1A1A18] font-[400] text-[16px] md:text-[20px] text-center leading-[140%] mt-2'>{t('services.description')}</p>
       <section className='mt-10 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center transition-all'>

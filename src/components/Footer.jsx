@@ -1,11 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence, useAnimation, useInView } from "framer-motion";
 import {
-  FaWhatsapp,
   FaTelegramPlane,
-  FaFacebookF,
-  FaInstagram,
 } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { FaFacebook } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
 import logo from "../assets/Group 9.svg";
 import { NavbarList } from "../../data/data";
@@ -56,7 +56,7 @@ const Footer = () => {
     >
       <motion.div className="container mx-auto px-4 pt-16" variants={variants}>
         <div className="flex flex-col md:flex-row justify-between items-center max-lg:items-start mb-10 gap-6">
-          <h1 className="md:text-[48px] text-[28px] font-manrope font-[600] leading-[120%]">
+          <h1 title={t('footer.title')} className="md:text-[48px] text-[28px] font-manrope font-[600] leading-[120%]">
             {t('footer.title')}
           </h1>
           <div className="relative inline-block group">
@@ -112,28 +112,28 @@ const Footer = () => {
                 target="_blank"
                 className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
               >
-                <FaWhatsapp className="text-white text-lg" />
+                <IoLogoWhatsapp size={22} className="text-white"/>
               </a>
               <a
                 href="https://telegram.com"
                 target="_blank"
                 className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
               >
-                <FaTelegramPlane className="text-white text-lg" />
+                <FaTelegramPlane size={22} className="text-white" />
               </a>
               <a
                 href="https://facebook.com"
                 target="_blank"
                 className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
               >
-                <FaFacebookF className="text-white text-lg" />
+                <FaFacebook size={21} className="text-white" />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
               >
-                <FaInstagram className="text-white text-lg" />
+                <AiFillInstagram size={24} className="text-white" />
               </a>
             </div>
           </div>
@@ -175,21 +175,18 @@ const Footer = () => {
             <ul className="text-white/50 leading-[120%] text-[18px] font-[400] font-manrope space-y-4">
               <a 
                 href={`tel:+998-99-536-57-47`} 
-                target="_blank" 
                 className="block"
               >
                 +998-99-536-57-47
               </a>
               <a 
                 href={`tel:+998-90-823-22-32`} 
-                target="_blank" 
                 className="block"
               >
                 +998-90-823-22-32
               </a>
               <a 
-                href={`ufdworldservice@gmail.com`} 
-                target="_blank" 
+                href={`https://ufdworldservice@gmail.com`} 
                 className="block"
               >
                 ufdworldservice@gmail.com
@@ -203,7 +200,7 @@ const Footer = () => {
           <div className="w-full max-sm:h-[300px] h-[500px] xl:w-[450px] xl:h-[300px]">
             <iframe
               title="Google Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11997.196760141967!2d69.16096433010117!3d41.25882113413043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae89c736cffcfd%3A0xd9c5e45c186f70f4!2sZarhal!5e0!3m2!1sen!2s!4v1749537386807!5m2!1sen!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.5346202562!2d69.21327497657988!3d41.29723190158181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bf9e100f78b%3A0x5903cc924a4bdfff!2sMuqimiy%20178!5e0!3m2!1sru!2s!4v1749881259499!5m2!1sru!2s"
               width="100%"
               height="100%"
               style={{ border: 0, borderRadius: "12px" }}
@@ -221,19 +218,19 @@ const Footer = () => {
         <div className="container mx-auto flex max-md:flex-col justify-between items-center gap-5">
           <div>© {years} {t('footer.years')}</div>
           <div className="flex flex-col md:flex-row md:mt-0 items-center">
-            <a
-              href="#"
+            <NavLink
+              to="/"
               className="hover:underline hover:-translate-y-[1px] transition duration-300"
             >
               {t('footer.description_1')}
-            </a>
+            </NavLink>
             <span className="hidden md:inline mx-1">|</span>
-            <a
-              href="#"
+            <NavLink
+              to="/"
               className="hover:underline hover:-translate-y-[1px] transition duration-300"
             >
               {t('footer.description_2')}
-            </a>
+            </NavLink>
           </div>
         </div>
       </motion.div>

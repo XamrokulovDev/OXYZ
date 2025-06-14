@@ -259,7 +259,7 @@ const Form = () => {
                   ? "w-full bg-white flex-1 p-6 z-10"
                   : isTablet
                     ? "w-full bg-white flex-1 p-8 z-10"
-                    : "w-full lg:w-1/2 xl:w-[40%] bg-white rounded-[14px] min-h-[525px] p-10"
+                    : "w-full lg:w-1/2 xl:w-[50%] bg-white rounded-[14px] min-h-[525px] p-15"
               } flex items-start justify-center`}
             >
               <AnimatePresence mode="wait">

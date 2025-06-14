@@ -50,37 +50,37 @@ const ContactPage = () => {
           className='w-full xl:w-[50%]'
         >
           <div>
-            <h1 className='font-manrope text-[#1A1A18] font-[600] text-[28px] sm:text-[40px] leading-[100%]'>{t('contact.title')}</h1>
+            <h1 title={t('contact.title')} className='font-manrope text-[#1A1A18] font-[600] text-[28px] sm:text-[40px] leading-[100%]'>{t('contact.title')}</h1>
           </div>
           <div className='my-15'>
             <div className='flex gap-2 my-10'>
               <BsTelephone className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('form.phone')}</h1>
-                <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>+998-99-536-57-47</h1>
+                <p className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('form.phone')}</p>
+                <p className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>+998-99-536-57-47</p>
               </div>
             </div>
             <div className='flex gap-2 my-10'>
               <BsTelephone className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('form.phone')}</h1>
-                <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>+998-90-823-22-32</h1>
+                <p className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('form.phone')}</p>
+                <p className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>+998-90-823-22-32</p>
               </div>
             </div>
             <div className='flex gap-2 my-8'>
               <IoMailOutline className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>E-mail</h1>
-                <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>ufdworldservice@gmail.com</h1>
+                <p className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>E-mail</p>
+                <p className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>ufdworldservice@gmail.com</p>
               </div>
             </div>
             <div className='flex gap-2 my-8'>
               <GrLocation className='w-[44px] h-[44px] bg-[#E5E4E2] p-[10px] rounded-[8px]' />
               <div>
-                <h1 className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('contact.location')}</h1>
-                <h1 className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>
+                <p className='text-[#A7A6A1] text-[14px] sm:text-[16px] mb-1'>{t('contact.location')}</p>
+                <p className='text-[#1A1A18] text-[18px] sm:text-[24px] font-[500]'>
                   {t('contact.map')}
-                </h1>
+                </p>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ const ContactPage = () => {
           animate={{ opacity: 1, y: 0 }} 
           transition={{ duration: 0.8 }}
           className='w-full lg:w-[615px]'>
-          <h1 className='font-manrope font-[600] text-[24px] sm:text-[40px] leading-[100%]'>
+          <h1 title={t('contact.description_1')} className='font-manrope font-[600] text-[24px] sm:text-[40px] leading-[100%]'>
             {t('contact.description_1')} <br />{t('contact.description_2')}
           </h1>
           <form onSubmit={handleSubmit} className='w-full bg-[#F7F7F6] rounded-lg sm:p-10 mt-8 p-6'>
