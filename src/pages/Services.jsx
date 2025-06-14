@@ -9,6 +9,7 @@ import Form from '../components/Form'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ModalForm from '../components/ModalForm';
+import HelmetPage from "../utils/Helmet";
 
 const Services = () => {
   const { t, i18n } = useTranslation();
@@ -55,6 +56,7 @@ const Services = () => {
 
   return (
     <>
+    <HelmetPage />
     <div className='flex flex-col gap-[50px]'>
       <Header />
       <div className='flex flex-col gap-[20px] mx-auto container px-4'>

@@ -2,17 +2,19 @@
     import Header from "../utils/Header";
     import HomeCards from "../components/HomeCards";
     import Form from "../components/Form"
+    import HelmetPage from "../utils/Helmet";
 
     const News = () => {
         useEffect(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, []);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, []);
     return (
-        <div>
+        <>
+            <HelmetPage />
             <Header />
             <HomeCards />
             <Form/>
-        </div>
+        </>
     )
     }
 

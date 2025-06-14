@@ -7,10 +7,12 @@ import FaqSection from "../components/FaqSection";
 import Statistics from "../components/Statistics";
 import Services from "../components/Services";
 import Us from "../components/Us";
+import HelmetPage from "../utils/Helmet";
 
 const Home = () => {
   return (
-    <div>
+    <>
+        <HelmetPage />
         <Header />
         <HeroSection />
         <Form/>
@@ -21,7 +23,7 @@ const Home = () => {
         <HomeCards />
         <FaqSection />
         <Form/>
-    </div>
+    </>
   )
 }
 

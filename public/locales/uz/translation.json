@@ -117,5 +117,32 @@
     "years": "OXYZ. Barcha huquqlar himoyalangan.",
     "description_1": "Foydalanish shartlari",
     "description_2": "Maxfiylik siyosati"
+  },
+  "seo": {
+      "home": {
+        "title": "OXYZ – transport logistika xizmati",
+        "description": "Biz xalqaro yuk tashishni to‘liq o‘z zimmamizga olamiz, shunda siz bemalol biznesingiz bilan shug‘ullanasiz.",
+        "keywords": "OXYZ, xalqaro logistika, yuk tashish, yuk yetkazib berish, tentli transport"
+      },
+      "about": {
+        "title": "OXYZ kompaniyasi haqida – Sizning xotirjamligingiz bizning ishimiz",
+        "description": "2022 yildan beri biz Yevropa va MDH davlatlaridan yuklarni xalqaro tashishda tushunarli, halol va ishonchli jarayonlarni qurib kelmoqdamiz.",
+        "keywords": "kompaniya, logistika kompaniyasi, xalqaro tashuvlar, tentli transport"
+      },
+      "services": {
+        "title": "OXYZ xizmatlari – kompleks xalqaro logistika",
+        "description": "Uskunalar, texnika va xalq isteʼmoli buyumlarini tentli transportda tashish. To‘liq sikl: hisob‑kitobdan boshlab \"eshikdan eshikkacha\" yetkazib berishgacha.",
+        "keywords": "logistika xizmatlari, xalqaro yuk tashish, tentli transport, yetkazib berish"
+      },
+      "news": {
+        "title": "OXYZ yangiliklari – muhim voqealar va loyihalar",
+        "description": "Kompaniyamiz yutuqlari va xalqaro logistika sohasidagi yangi loyihalarimizni kuzatib boring.",
+        "keywords": "logistika yangiliklari, OXYZ loyihalari, xalqaro tashuvlar"
+      },
+      "contact": {
+        "title": "OXYZ kontaktlari – Biz bilan bog‘laning",
+        "description": "Kunning o‘zida javob beramiz: yukingizni yetkazib berish narxini bilish uchun formani to‘ldiring yoki bizga qo‘ng‘iroq qiling.",
+        "keywords": "OXYZ kontaktlari, logistika kompaniyasi, yetkazib berish hisob‑kitobi, xalqaro tashuvlar"
+      }
   }
 }

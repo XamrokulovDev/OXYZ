@@ -1,13 +1,14 @@
 import ContactPage from '../components/ContactPage'
 import  Header  from '../utils/Header'
-import React from 'react'
+import HelmetPage from "../utils/Helmet";
 
 const Contact = () => {
   return (
-    <div>
+    <>
+        <HelmetPage />
         <Header/>
         <ContactPage/>
-    </div>
+    </>
   )
 }
 

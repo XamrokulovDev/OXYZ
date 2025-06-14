@@ -6,6 +6,7 @@ import Statistics from "../components/Statistics";
 import Us from "../components/Us";
 import Header from "../utils/Header";
 import { useLocation } from "react-router-dom";
+import HelmetPage from "../utils/Helmet";
 
 const About = () => {
   const { pathname } = useLocation();
@@ -14,14 +15,15 @@ const About = () => {
   }, [pathname]);
 
   return (
-    <div>
+    <>
+        <HelmetPage />
         <Header />
         <Us />
         <Statistics />
         <Info />
         <FaqSection />
         <Form />
-    </div>
+    </>
   )
 }
 
