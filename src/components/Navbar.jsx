@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const _api = import.meta.env.VITE_API;
 
   const sidebarVariants = {
     hidden: { x: "100%" },

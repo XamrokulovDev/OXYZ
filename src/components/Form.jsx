@@ -598,7 +598,7 @@ const Form = () => {
                     ? "w-full h-auto max-h-[400px] object-contain mx-auto"
                     : isTablet
                       ? "w-[350px] h-[350px] object-contain absolute -bottom-3 right-0 left-0 mx-auto"
-                      : "w-[400px] lg:w-[500px] h-[500px] object-contain absolute -bottom-3 right-0"
+                      : "w-[400px] lg:w-[500px] h-[600px] scale-[1.15] object-contain absolute -bottom-14 right-0"
                 }`}
               />
             </div>
