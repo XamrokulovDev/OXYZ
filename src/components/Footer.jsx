@@ -186,7 +186,9 @@ const Footer = () => {
                 +998-90-823-22-32
               </a>
               <a 
-                href={`https://ufdworldservice@gmail.com`} 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=ufdworldservice@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block"
               >
                 ufdworldservice@gmail.com

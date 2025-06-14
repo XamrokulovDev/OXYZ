@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/Logo.svg";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -11,11 +11,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NavbarList } from "../../data/data";
 import Translation from "../utils/Translation";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
+  const [social, setSocial] = useState({});
   const _api = import.meta.env.VITE_API;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${_api}/api/social-media`);
+        setSocial(response.data);
+        console.log(response.data.links)
+      } catch (error) {
+        console.error("Socials ma’lumotini olishda xatolik:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const sidebarVariants = {
     hidden: { x: "100%" },
@@ -31,13 +46,6 @@ const Navbar = () => {
       transition: { duration: 0.5, ease: "easeOut" },
     },
   };
-
-  const socialLinks = [
-    { icon: IoLogoWhatsapp, href: "https://wa.me/998908232232" },
-    { icon: FaTelegramPlane, href: "https://t.me/username" },
-    { icon: FaFacebook, href: "https://facebook.com/yourpage" },
-    { icon: PiInstagramLogoFill, href: "https://instagram.com/yourprofile" },
-  ];
 
   return (
     <>
@@ -185,17 +193,34 @@ const Navbar = () => {
                   </a>
                 </div>
                 <div className="flex items-center justify-end mt-5 gap-2">
-                  {socialLinks.map(({ icon: Icon, href }, index) => (
-                    <motion.a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      key={index}
-                      className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
-                    >
-                      <Icon size={25} className="text-[#1A1A18] group-hover:text-white" />
-                    </motion.a>
-                  ))}
+                  <a 
+                    href="" 
+                    target="_blank"
+                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
+                  >
+                    <IoLogoWhatsapp size={25}/>
+                  </a>
+                  <a 
+                    href=""
+                    target="_blank"
+                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
+                  >
+                    <FaTelegramPlane size={25}/>
+                  </a>
+                  <a 
+                    href=""
+                    target="_blank"
+                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
+                  >
+                    <FaFacebook size={25}/>
+                  </a>
+                  <a 
+                    href=""
+                    target="_blank"
+                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
+                  >
+                    <PiInstagramLogoFill size={25}/>
+                  </a>
                 </div>
               </div>
             </motion.div>

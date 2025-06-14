@@ -32,7 +32,7 @@ const Routerlayout = () => {
       <Outlet />
       <Footer />
       {showScrollBtn && (
-        <div className="cursor-pointer rounded-full w-13 h-13 flex items-center justify-center shadow-lg border border-gray-200 bg-white fixed bottom-12 right-12 max-lg:right-4 max-lg:bottom-5 z-[99]">
+        <div className="cursor-pointer rounded-full w-13 h-13 flex items-center justify-center shadow-lg border border-gray-200 bg-white fixed bottom-12 right-12 max-lg:right-4 max-lg:bottom-5 z-[97]">
           <button
             onClick={scrollToTop}
             className="text-orange-500 cursor-pointer"
