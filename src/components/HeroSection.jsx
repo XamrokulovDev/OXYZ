@@ -1,7 +1,7 @@
 import { IoIosArrowForward } from "react-icons/io"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import map from "../assets/map.png";
+import map from "../assets/map.webp";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 

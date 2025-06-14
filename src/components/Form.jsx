@@ -1,18 +1,18 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import worldImage from "../assets/world image.svg"
-import girlImage from "../assets/Girl manager.svg"
-import manager from "../assets/menager.png"
+import worldImage from "../assets/world image.webp"
+import girlImage from "../assets/Girl manager.webp"
+import manager from "../assets/menager.webp"
 import { useTranslation } from "react-i18next"
 
 const Form = () => {
   const { t } = useTranslation()
+  const _api = import.meta.env.VITE_API;
   const [step, setStep] = useState(1)
   const [isMobile, setIsMobile] = useState(false)
   const [isTablet, setIsTablet] = useState(false)
   const [notification, setNotification] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const [formData, setFormData] = useState({
     from: "",
@@ -44,7 +44,7 @@ const Form = () => {
     setNotification({ message, type })
     setTimeout(() => {
       setNotification(null)
-    }, 5000)
+    }, 3000)
   }
 
   const handleInputChange = (field, value) => {
@@ -192,15 +192,40 @@ const Form = () => {
     setErrors({})
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (validateStep3()) {
+      setIsLoading(true)
+
       const submissionData = {
-        ...formData,
-        phone: "+998" + formData.phone.replace(/\s/g, ""),
-        submittedAt: new Date().toISOString(),
+        where: formData.from,
+        to: formData.to,
+        kind: formData.cargo,
+        weight: formData.weight,
+        transport_type: formData.transport,
+        username: formData.name,
+        phone_number: "+998" + formData.phone.replace(/\s/g, ""),
       }
 
-      showNotification(t("form.message_19"), "success")
+      try {
+        const response = await fetch(`${_api}/api/cost`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submissionData),
+        })
+
+        if (response.ok) {
+          showNotification(t("form.message_19"), "success")
+        } else {
+          showNotification("Xatolik yuz berdi", "error")
+        }
+      } catch (error) {
+        console.error("API Error:", error)
+        showNotification("Tarmoq xatosi", "error")
+      } finally {
+        setIsLoading(false)
+      }
 
       setFormData({
         from: "",
@@ -273,76 +298,78 @@ const Form = () => {
                     className="w-full h-[445px] flex flex-col justify-between"
                   >
                     <div className="">
-                    <div className="mb-8">
-                      <label htmlFor="from" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
-                        {t("form.label_1")}
-                      </label>
-                      <input
-                        id="from"
-                        type="text"
-                        placeholder={t("form.placeholder_1")}
-                        value={formData.from}
-                        onChange={(e) => handleInputChange("from", e.target.value)}
-                        className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
-                          errors.from ? "border-red-500" : "border-gray-300"
-                        }`}
-                      />
-                      {errors.from && <p className="text-red-500 text-xs mt-1">{errors.from}</p>}
-                    </div>
-                    <div className="mb-6">
-                      <label htmlFor="to" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
-                        {t("form.label_2")}
-                      </label>
-                      <input
-                        id="to"
-                        type="text"
-                        placeholder={t("form.placeholder_2")}
-                        value={formData.to}
-                        onChange={(e) => handleInputChange("to", e.target.value)}
-                        className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
-                          errors.to ? "border-red-500" : "border-gray-300"
-                        }`}
-                      />
-                      {errors.to && <p className="text-red-500 text-xs mt-1">{errors.to}</p>}
-                    </div>
+                      <div className="mb-8">
+                        <label htmlFor="from" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
+                          {t("form.label_1")}
+                        </label>
+                        <input
+                          id="from"
+                          type="text"
+                          placeholder={t("form.placeholder_1")}
+                          value={formData.from}
+                          onChange={(e) => handleInputChange("from", e.target.value)}
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
+                            errors.from ? "border-red-500" : "border-gray-300"
+                          }`}
+                        />
+                        {errors.from && <p className="text-red-500 text-xs mt-1">{errors.from}</p>}
+                      </div>
+                      <div className="mb-6">
+                        <label htmlFor="to" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
+                          {t("form.label_2")}
+                        </label>
+                        <input
+                          id="to"
+                          type="text"
+                          placeholder={t("form.placeholder_2")}
+                          value={formData.to}
+                          onChange={(e) => handleInputChange("to", e.target.value)}
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
+                            errors.to ? "border-red-500" : "border-gray-300"
+                          }`}
+                        />
+                        {errors.to && <p className="text-red-500 text-xs mt-1">{errors.to}</p>}
+                      </div>
                     </div>
                     <div className="">
-                    <div className="relative inline-block w-full">
-                      <motion.button
-                        onClick={handleNext}
-                        className="relative w-full cursor-pointer bg-[#F07C00] hover:bg-orange-600 text-white font-[500] text-[18px] leading-[100%] font-manrope rounded-md transition-colors overflow-hidden py-5"
-                      >
-                        {t("form.submit")}
-                        {/* Shine Effect */}
-                        <motion.div
-                          className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
-                          initial={{ x: "-100%" }}
-                          animate={{ x: ["-100%", "200%"] }}
-                          transition={{
-                            duration: 2.2,
-                            repeat: Number.POSITIVE_INFINITY,
-                            repeatDelay: 3,
-                            ease: "easeInOut",
-                          }}
+                      <div className="relative inline-block w-full">
+                        <motion.button
+                          onClick={handleNext}
+                          className="relative w-full cursor-pointer bg-[#F07C00] hover:bg-orange-600 text-white font-[500] text-[18px] leading-[100%] font-manrope rounded-md transition-colors overflow-hidden py-5"
                         >
-                          <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
-                        </motion.div>
-                      </motion.button>
-                    </div>
-                    <div className="flex items-center gap-2 mt-6">
-                      <div className="w-[33%]">
-                        <p className="flex justify-between items-center text-xs text-gray-400">{t("form.location")}</p>
-                        <div className="flex-1 h-1 rounded bg-[#F07C00] mt-1"/>
+                          {t("form.submit")}
+                          {/* Shine Effect */}
+                          <motion.div
+                            className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
+                            initial={{ x: "-100%" }}
+                            animate={{ x: ["-100%", "200%"] }}
+                            transition={{
+                              duration: 2.2,
+                              repeat: Number.POSITIVE_INFINITY,
+                              repeatDelay: 3,
+                              ease: "easeInOut",
+                            }}
+                          >
+                            <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
+                          </motion.div>
+                        </motion.button>
                       </div>
-                      <div className="w-[33%] text-center">
-                        <p className="flex justify-between items-center text-xs text-gray-400">{t("form.box")}</p>
-                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1"/>
+                      <div className="flex items-center gap-2 mt-6">
+                        <div className="w-[33%]">
+                          <p className="flex justify-between items-center text-xs text-gray-400">
+                            {t("form.location")}
+                          </p>
+                          <div className="flex-1 h-1 rounded bg-[#F07C00] mt-1" />
+                        </div>
+                        <div className="w-[33%] text-center">
+                          <p className="flex justify-between items-center text-xs text-gray-400">{t("form.box")}</p>
+                          <div className="flex-1 h-1 rounded bg-orange-100 mt-1" />
+                        </div>
+                        <div className="w-[33%] text-center">
+                          <p className="flex justify-between items-center text-xs text-gray-400">{t("form.saller")}</p>
+                          <div className="flex-1 h-1 rounded bg-orange-100 mt-1" />
+                        </div>
                       </div>
-                      <div className="w-[33%] text-center">
-                        <p className="flex justify-between items-center text-xs text-gray-400">{t("form.saller")}</p>
-                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1" />
-                      </div>
-                    </div>
                     </div>
                   </motion.div>
                 )}
@@ -353,7 +380,7 @@ const Form = () => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -50 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full h-[325px]"
+                    className="w-full lg:h-[325px] h-[415px] max-lg:pb-10"
                   >
                     <div className="mb-4">
                       <label htmlFor="cargo" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
@@ -406,30 +433,8 @@ const Form = () => {
                       />
                       {errors.transport && <p className="text-red-500 text-xs mt-1">{errors.transport}</p>}
                     </div>
-                    <div className="flex gap-3 mt-20">
-                      <div className="relative inline-block flex-1">
-                        <motion.button
-                          onClick={handleBack}
-                          className="relative w-full cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-700 font-[500] text-[18px] py-4 rounded-md transition-colors overflow-hidden"
-                        >
-                          {t("form.cancel")}
-                          {/* Shine Effect */}
-                          <motion.div
-                            className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
-                            initial={{ x: "-100%" }}
-                            animate={{ x: ["-100%", "200%"] }}
-                            transition={{
-                              duration: 2.2,
-                              repeat: Number.POSITIVE_INFINITY,
-                              repeatDelay: 3,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
-                          </motion.div>
-                        </motion.button>
-                      </div>
-                      <div className="relative inline-block flex-1">
+                    <div className="mt-20">
+                      <div className="relative inline-block w-full">
                         <motion.button
                           onClick={handleNext}
                           className="relative w-full cursor-pointer bg-[#F07C00] hover:bg-orange-600 text-white font-[500] text-[18px] py-4 rounded-md transition-colors overflow-hidden"
@@ -455,11 +460,11 @@ const Form = () => {
                     <div className="flex items-center gap-2 mt-6">
                       <div className="w-[33%]">
                         <p className="flex justify-between items-center text-xs text-gray-400">{t("form.location")}</p>
-                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1"/>
+                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1" />
                       </div>
                       <div className="w-[33%] text-center">
                         <p className="flex justify-between items-center text-xs text-gray-400">{t("form.box")}</p>
-                        <div className="flex-1 h-1 rounded bg-[#F07C00] mt-1"/>
+                        <div className="flex-1 h-1 rounded bg-[#F07C00] mt-1" />
                       </div>
                       <div className="w-[33%] text-center">
                         <p className="flex justify-between items-center text-xs text-gray-400">{t("form.saller")}</p>
@@ -479,96 +484,80 @@ const Form = () => {
                     className="w-full h-[445px] flex flex-col justify-between"
                   >
                     <div className="">
-                    <div className="mb-6">
-                      <label htmlFor="name" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
-                        {t("form.name")}
-                      </label>
-                      <input
-                        id="name"
-                        type="text"
-                        placeholder={t("form.type_name")}
-                        value={formData.name}
-                        onChange={(e) => handleInputChange("name", e.target.value)}
-                        className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
-                          errors.name ? "border-red-500" : "border-gray-300"
-                        }`}
-                      />
-                      {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-                    </div>
-                    <div className="mb-6">
-                      <label htmlFor="phone" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
-                        {t("form.phone")}
-                      </label>
-                      <div className="relative">
-                        <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">+998</span>
+                      <div className="mb-6">
+                        <label htmlFor="name" className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2">
+                          {t("form.name")}
+                        </label>
                         <input
-                          id="phone"
-                          type="tel"
-                          placeholder="XX XXX XX XX"
-                          value={formData.phone}
-                          onChange={(e) => handlePhoneChange(e.target.value)}
-                          className={`w-full pl-16 pr-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
-                            errors.phone ? "border-red-500" : "border-gray-300"
+                          id="name"
+                          type="text"
+                          placeholder={t("form.type_name")}
+                          value={formData.name}
+                          onChange={(e) => handleInputChange("name", e.target.value)}
+                          className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
+                            errors.name ? "border-red-500" : "border-gray-300"
                           }`}
                         />
+                        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                       </div>
-                    </div>
+                      <div className="mb-6">
+                        <label
+                          htmlFor="phone"
+                          className="block font-manrope font-[500] text-[16px] leading-[100%] mb-2"
+                        >
+                          {t("form.phone")}
+                        </label>
+                        <div className="relative">
+                          <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">+998</span>
+                          <input
+                            id="phone"
+                            type="tel"
+                            placeholder="XX XXX XX XX"
+                            value={formData.phone}
+                            onChange={(e) => handlePhoneChange(e.target.value)}
+                            className={`w-full pl-16 pr-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
+                              errors.phone ? "border-red-500" : "border-gray-300"
+                            }`}
+                          />
+                        </div>
+                      </div>
                       {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
-                    <div className="flex gap-3 mt-30">
-                      <div className="relative inline-block flex-1">
-                        <motion.button
-                          onClick={handleBack}
-                          className="relative w-full cursor-pointer bg-gray-200 hover:bg-gray-300 text-gray-700 font-[500] text-[18px] py-4 rounded-md transition-colors overflow-hidden"
-                        >
-                          {t("form.cancel")}
-                          {/* Shine Effect */}
-                          <motion.div
-                            className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
-                            initial={{ x: "-100%" }}
-                            animate={{ x: ["-100%", "200%"] }}
-                            transition={{
-                              duration: 2.2,
-                              repeat: Number.POSITIVE_INFINITY,
-                              repeatDelay: 3,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
-                          </motion.div>
-                        </motion.button>
-                      </div>
-                      <div className="relative inline-block flex-1">
+                    <div className="mt-30">
+                      <div className="relative inline-block w-full">
                         <motion.button
                           onClick={handleSubmit}
-                          className="relative w-full cursor-pointer bg-[#F07C00] hover:bg-orange-600 text-white font-[500] text-[18px] py-4 rounded-md transition-colors overflow-hidden"
+                          disabled={isLoading}
+                          className="relative w-full cursor-pointer bg-[#F07C00] hover:bg-orange-600 text-white font-[500] text-[18px] py-4 rounded-md transition-colors overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          {t("form.message_20")}
+                          {isLoading ? "Yuklanmoqda..." : t("form.message_20")}
                           {/* Shine Effect */}
-                          <motion.div
-                            className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
-                            initial={{ x: "-100%" }}
-                            animate={{ x: ["-100%", "200%"] }}
-                            transition={{
-                              duration: 2.2,
-                              repeat: Number.POSITIVE_INFINITY,
-                              repeatDelay: 3,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
-                          </motion.div>
+                          {!isLoading && (
+                            <motion.div
+                              className="absolute top-0 left-0 w-full h-full pointer-events-none z-50"
+                              initial={{ x: "-100%" }}
+                              animate={{ x: ["-100%", "200%"] }}
+                              transition={{
+                                duration: 2.2,
+                                repeat: Number.POSITIVE_INFINITY,
+                                repeatDelay: 3,
+                                ease: "easeInOut",
+                              }}
+                            >
+                              <div className="w-[30%] h-full bg-gradient-to-r from-transparent via-white/70 to-transparent transform -skew-x-12" />
+                            </motion.div>
+                          )}
                         </motion.button>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 mt-6">
                       <div className="w-[33%]">
                         <p className="flex justify-between items-center text-xs text-gray-400">{t("form.location")}</p>
-                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1"/>
+                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1" />
                       </div>
                       <div className="w-[33%] text-center">
                         <p className="flex justify-between items-center text-xs text-gray-400">{t("form.box")}</p>
-                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1"/>
+                        <div className="flex-1 h-1 rounded bg-orange-100 mt-1" />
                       </div>
                       <div className="w-[33%] text-center">
                         <p className="flex justify-between items-center text-xs text-gray-400">{t("form.saller")}</p>
@@ -595,7 +584,7 @@ const Form = () => {
                 loading="lazy"
                 className={`${
                   isMobile
-                    ? "w-full h-auto max-h-[400px] object-contain mx-auto"
+                    ? "w-full h-auto max-h-[400px] object-contain mx-auto pt-5"
                     : isTablet
                       ? "w-[350px] h-[350px] object-contain absolute -bottom-3 right-0 left-0 mx-auto"
                       : "w-[400px] lg:w-[500px] h-[600px] scale-[1.15] object-contain absolute -bottom-14 right-0"
@@ -605,7 +594,6 @@ const Form = () => {
           </div>
         </div>
       </div>
-
       {/* Custom Notification */}
       <AnimatePresence>
         {notification && (

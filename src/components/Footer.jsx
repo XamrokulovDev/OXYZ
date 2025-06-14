@@ -7,11 +7,13 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
-import logo from "../assets/Group 9.svg";
+import logo from "../assets/Group 9.webp";
 import { NavbarList } from "../../data/data";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ModalForm from "./ModalForm";
+import axios from "axios";
+import { PiInstagramLogoFill } from "react-icons/pi";
 
 const Footer = () => {
   const ref = useRef(null);
@@ -24,7 +26,20 @@ const Footer = () => {
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
-  
+
+  const [social, setSocial] = useState({});
+  const _api = import.meta.env.VITE_API;
+  useEffect(() => {
+    const fetchData = async () => {
+       try {
+         const response = await axios.get(`${_api}/api/social-media`);
+         setSocial(response.data.links);
+      } catch (error) {
+        console.error("Socials ma’lumotini olishda xatolik:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (inView) {
@@ -100,46 +115,57 @@ const Footer = () => {
                 src={logo} 
                 alt="OXYZ" 
                 loading="lazy"
-                className="h-10" 
               />
             </NavLink>
             <p className="w-[300px] text-white/50 font-manrope font-[400] text-[20px] mb-4">
               {t('footer.description')}
             </p>
             <div className="flex space-x-2">
-              <a
-                href="https://whatsapp.com"
-                target="_blank"
-                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
-              >
-                <IoLogoWhatsapp size={22} className="text-white"/>
-              </a>
-              <a
-                href="https://telegram.com"
-                target="_blank"
-                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
-              >
-                <FaTelegramPlane size={22} className="text-white" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
-              >
-                <FaFacebook size={21} className="text-white" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
-              >
-                <AiFillInstagram size={24} className="text-white" />
-              </a>
+              {social?.whatsapp && (
+                <a
+                  href={social.whatsapp}
+                  target="_blank"
+                   rel="noopener noreferrer"
+                  className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+                 >
+                   <IoLogoWhatsapp  size={22} className="text-white"/>
+                 </a>
+               )}
+               {social?.telegram && (
+                 <a
+                   href={social.telegram}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                  className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+                >
+                  <FaTelegramPlane  size={22} className="text-white"/>
+                </a>
+              )}
+              {social?.facebook && (
+                 <a
+                   href={social.facebook}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+                 >
+                   <FaFacebook  size={22} className="text-white"/>
+                 </a>
+               )}
+               {social?.instagram && (
+                 <a
+                   href={social.instagram}
+                  target="_blank"
+                   rel="noopener noreferrer"
+                   className="bg-[#232323] p-3 rounded-lg transition duration-300 hover:bg-orange-500"
+                 >
+                   <PiInstagramLogoFill  size={22} className="text-white"/>
+                 </a>
+              )}
             </div>
           </div>
 
           <div>
-            <h3 className="text-[28px] text-white font-[600] font-manrope mb-4">
+            <h3 title={t('footer.navigate')} className="text-[28px] text-white font-[600] font-manrope mb-4">
               {t('footer.navigate')}
             </h3>
             <ul className="flex flex-col items-start space-y-3">
@@ -169,21 +195,21 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-[28px] text-white font-[600] font-manrope mb-4">
+            <h3 title={t('contact.title')} className="text-[28px] text-white font-[600] font-manrope mb-4">
               {t('contact.title')}
             </h3>
             <ul className="text-white/50 leading-[120%] text-[18px] font-[400] font-manrope space-y-4">
               <a 
-                href={`tel:+998-99-536-57-47`} 
+                href={`tel:${social?.phone_number1}`} 
                 className="block"
               >
-                +998-99-536-57-47
+                {social?.phone_number1}
               </a>
               <a 
-                href={`tel:+998-90-823-22-32`} 
+                href={`tel:${social?.phone_number2}`} 
                 className="block"
               >
-                +998-90-823-22-32
+                {social?.phone_number2}
               </a>
               <a 
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=ufdworldservice@gmail.com"

@@ -69,7 +69,7 @@ const FaqSection = () => {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         {/* Title */}
-        <h2 className="text-[#111111] font-manrope font-[600] md:text-[48px] text-[28px] text-center">
+        <h2 title={t('faq.title')} className="text-[#111111] font-manrope font-[600] md:text-[48px] text-[28px] text-center">
           {t('faq.title')}
         </h2>
         {/* FAQ Items */}
@@ -91,7 +91,7 @@ const FaqSection = () => {
                   <span className="text-[#111111]/40 font-[600] font-manrope md:text-[36px] text-[24px] leading-[120%] ">
                     {String(item.id).padStart(2, "0")}
                   </span>
-                  <h3 className="text-[#1A1A18] md:text-[24px] text-[20px] font-[600] font-manrope leading-[140%]">
+                  <h3 title={i18n.language === "uz" ? item.question_uz : item.question_ru} className="text-[#1A1A18] md:text-[24px] text-[20px] font-[600] font-manrope leading-[140%]">
                     {i18n.language === "uz" ? item.question_uz : item.question_ru}
                   </h3>
                 </div>

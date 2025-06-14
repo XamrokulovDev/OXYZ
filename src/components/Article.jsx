@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import container from '../assets/container.svg';
+import container from '../assets/container.webp';
 
 const Article = () => {
   useEffect(() => {

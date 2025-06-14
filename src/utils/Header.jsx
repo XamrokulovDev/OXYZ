@@ -1,4 +1,4 @@
-import img from "../assets/about.jpg";
+import img from "../assets/about.webp";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";

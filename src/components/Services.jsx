@@ -1,6 +1,6 @@
-import ship from '../assets/ship.jpg'
-import office from '../assets/office.jpg'
-import xujjat from '../assets/xujjat.jpg'
+import ship from '../assets/ship.webp'
+import office from '../assets/office.webp'
+import xujjat from '../assets/xujjat.webp'
 import { MdArrowOutward } from "react-icons/md"
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
@@ -38,7 +38,7 @@ const Services = () => {
 
   return (
     <div className='container mx-auto px-4'>
-      <h1 className='text-[28px] md:text-[48px] font-[600] text-[#1A1A18] text-center leading-[120%]'>{t('services.title')}</h1>
+      <h1 title={t('services.title')} className='text-[28px] md:text-[48px] font-[600] text-[#1A1A18] text-center leading-[120%]'>{t('services.title')}</h1>
       <p className='text-[#1A1A18] font-[400] text-[16px] md:text-[20px] text-center leading-[140%] mt-2'>{t('services.description')}</p>
       <section className='mt-10 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center transition-all'>
         {servicesData.map((service, index) => (
@@ -63,9 +63,9 @@ const Services = () => {
             </button>
             <div className="absolute bottom-0 left-0 w-full bg-[#F07C0000]/40 backdrop-blur-sm text-white px-4 py-3 z-20 transition-all duration-500">
               <div className="transition-all duration-500 transform group-hover:-translate-y-3">
-                <h1 className="text-[20px] md:text-[32px] font-manrope font-[600] leading-[120%] whitespace-pre-line line-clamp-2 min-h-[64px]">
+                <h2 title={i18n.language === "uz" ? service.title_uz : service.title_ru} className="text-[20px] md:text-[32px] font-manrope font-[600] leading-[120%] whitespace-pre-line line-clamp-2 min-h-[64px]">
                   {i18n.language === "uz" ? service.title_uz : service.title_ru}
-                </h1>
+                </h2>
               </div>
               <p className="text-[18px] font-manrope leading-[140%] font-[500] opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-[200px] transition-all duration-700 ease-in-out mt-2">
                 {i18n.language === "uz" ? service.descrirption_uz : service.description_ru}

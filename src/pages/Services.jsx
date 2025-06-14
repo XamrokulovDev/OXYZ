@@ -1,7 +1,7 @@
 import Header from '../utils/Header'
-import Img1 from '../assets/Image.png'
-import Img2 from '../assets/opa.png'
-import Img3 from '../assets/qol.png'
+import Img1 from '../assets/Image.webp'
+import Img2 from '../assets/opa.webp'
+import Img3 from '../assets/qol.webp'
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowForward } from "react-icons/io"
 import { useInView } from "react-intersection-observer"
@@ -58,7 +58,7 @@ const Services = () => {
     <div className='flex flex-col gap-[50px]'>
       <Header />
       <div className='flex flex-col gap-[20px] mx-auto container px-4'>
-        <h1 className='font-manrope font-[500] leading-[120%] text-center text-[48px] text-[#1A1A18] max-md:text-[32px] max-lg:text-[36px]'>
+        <h1 title={t('services.title')} className='font-manrope font-[500] leading-[120%] text-center text-[48px] text-[#1A1A18] max-md:text-[32px] max-lg:text-[36px]'>
           {t('services.title')}
         </h1>
         <p className='font-manrope font-[400] text-[20px] leading-[140%] text-center text-[#1A1A18] max-md:text-[16px] max-md:px-6'>
@@ -76,7 +76,7 @@ const Services = () => {
               }`}
             >
               <div className='max-md:px-4 lg:w-[40%]'>
-                <h2 className='font-[600] text-[36px] leading-[120%] font-manrope mb-[20px] max-md:mb-[10px] max-md:text-[28px] max-lg:text-[30px] max-xl:text-[32px]'>
+                <h2 title={i18n.language === "uz" ? service.title_uz : service.title_ru} className='font-[600] text-[36px] leading-[120%] font-manrope mb-[20px] max-md:mb-[10px] max-md:text-[28px] max-lg:text-[30px] max-xl:text-[32px]'>
                   {i18n.language === "uz" ? service.title_uz : service.title_ru}
                 </h2>
                 <div className='flex justify-between items-start gap-[50px] flex-col max-md:gap-[30px] max-lg:gap-[35px] max-xl:gap-[30px]'>

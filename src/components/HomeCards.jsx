@@ -3,15 +3,16 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import { motion } from 'framer-motion'
-import image from '../assets/NewCardImg.svg'
+import image from '../assets/NewCardImg.webp'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 const HomeCards = () => {
-  const { t } = useTranslation()
-  const swiperRef = useRef(null)
-  const [activeIdx, setActiveIdx] = useState(0)
-  const [showPagination, setShowPagination] = useState(false)
+  const swiperRef = useRef(null);
+  const { t } = useTranslation();
+  const _api = import.meta.env.VITE_API;
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [showPagination, setShowPagination] = useState(false);
 
   const news = [
     { id: 1, title: 'Открыли новое направление — доставка в Китай', text: 'Мы расширили географию перевозок: теперь доступны международные грузоперевозки по странам Европы. Работаем с полным сопровождением и оформлением документов. Уже в пути — первые грузы наших клиентов!', date: '03.06.2025', img: image },
@@ -36,14 +37,13 @@ const HomeCards = () => {
           variants={fadeInUp}
           className="text-center"
         >
-          <h1 className="text-[#1A1A18] md:text-[48px] text-[28px] font-manrope font-[600]">
+          <h1 title={t('cards.title')} className="text-[#1A1A18] md:text-[48px] text-[28px] font-manrope font-[600]">
             {t('cards.title')}
           </h1>
           <p className="text-[#1A1A18] md:text-[20px] text-[16px] font-manrope my-5">
             {t('cards.description_1')} <br /> {t('cards.description_2')}
           </p>
         </motion.div>
-
         <Swiper
           modules={[Autoplay]}
           onSwiper={(sw) => {
@@ -80,7 +80,7 @@ const HomeCards = () => {
                     <img src={item.img} alt="news" loading="lazy"
                          className="w-full h-[280px] object-cover rounded-[16px] mb-4" />
                     <span className="block px-3">
-                      <h2 className="text-[#1A1A18] text-[24px] font-[600] font-manrope line-clamp-2 mb-3">
+                      <h2 title={item.title} className="text-[#1A1A18] text-[24px] font-[600] font-manrope line-clamp-2 mb-3">
                         {item.title}
                       </h2>
                       <p className="text-[#A7A6A1] text-[16px] font-manrope line-clamp-4 mb-6">
@@ -97,7 +97,6 @@ const HomeCards = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-
         {showPagination && (
           <div className="flex justify-center gap-2 mt-5">
             {news.map((_, i) => (

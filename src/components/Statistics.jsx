@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import image from "../assets/Image.svg";
-import img1 from "../assets/Frame 46.svg";
-import img2 from "../assets/Frame 46 (1).svg";
-import img3 from "../assets/Frame 46 (2).svg";
-import img4 from "../assets/Frame 46 (3).svg";
+import image from "../assets/Image (1).webp";
+import img1 from "../assets/Frame 46.webp";
+import img2 from "../assets/Frame 46 (1).webp";
+import img3 from "../assets/Frame 46 (2).webp";
+import img4 from "../assets/Frame 46 (3).webp";
 import { useTranslation } from "react-i18next";
 
 const stats = [
@@ -49,7 +49,7 @@ function Statistics() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h1 className="font-[500] md:text-[36px] text-[28px] leading-[120%] font-manrope text-[#1A1A18] mb-4">
+          <h1 title={t('statistics.title')} className="font-[500] md:text-[36px] text-[28px] leading-[120%] font-manrope text-[#1A1A18] mb-4">
             {t('statistics.title')}
           </h1>
           <div className="flex flex-col lg:gap-10 gap-5 lg:mt-20">
@@ -95,7 +95,7 @@ function Statistics() {
               className="w-12 h-12"
             />
             <div className="mt-10">
-              <h2 className="text-[#1A1A18] font-[700] text-[36px] leading-[100%] font-manrope">
+              <h2 title={i18n.language === "uz" ? item.value_uz : item.value_ru} className="text-[#1A1A18] font-[700] text-[36px] leading-[100%] font-manrope">
                 {i18n.language === "uz" ? item.value_uz : item.value_ru}
               </h2>
               <p className="text-[#1A1A18] text-[16px] font-manrope font-[400] leading-[120%] mt-2">

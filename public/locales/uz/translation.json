@@ -68,7 +68,9 @@
     "name": "Ism",
     "type_name": "Ismingizni kiriting",
     "phone": "Telefon raqami",
-    "message_20": "Narxni hisoblash"
+    "message_20": "Narxni hisoblash",
+    "message_success": "So‘rovingiz muvaffaqiyatli yuborildi!",
+    "message_error_api": "Xatolik yuz berdi. Keyinroq qayta urinib ko‘ring."
   },
   "us": {
     "title": "Nega aynan biz?",
@@ -105,7 +107,8 @@
     "description_1": "Bir kun ichida javob beramiz,",
     "description_2": "formani to‘ldiring",
     "check": "Shaxsiy ma'lumotlarimni qayta ishlashga roziman",
-    "button": "Yuborish"
+    "button": "Yuborish",
+    "loading":"Yuborilmoqda..."
   },
   "footer": {
     "title": "Savollaringiz bormi?",

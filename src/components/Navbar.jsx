@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/Logo.svg";
+import logo from "../assets/Logo.webp";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaTelegram, FaFacebook } from "react-icons/fa6";
 import { TbMenu } from "react-icons/tb";
@@ -23,8 +23,7 @@ const Navbar = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${_api}/api/social-media`);
-        setSocial(response.data);
-        console.log(response.data.links)
+        setSocial(response.data.links);
       } catch (error) {
         console.error("Socials ma’lumotini olishda xatolik:", error);
       }
@@ -80,28 +79,34 @@ const Navbar = () => {
                 </p>
               </div>
               <a 
-                href={`tel:+99890-823-22-32`}
+                href={`tel:${social?.phone_number1}`}
                 className="text-white font-manrope font-[700] text-[20px] leading-[100%]"
               >
-                +99890-823-22-32
+                {social?.phone_number1}
               </a>
             </motion.div>
             <div className="flex items-center gap-1">
               <Translation />
-              <motion.a
-                href="https://wa.me/998908232232"
-                target="_blank"
-                className="w-12 h-12 cursor-pointer bg-white/20 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2"
-              >
-                <IoLogoWhatsapp size={23} className="text-white" />
-              </motion.a>
-              <motion.a
-                href="https://t.me/username"
-                target="_blank"
-                className="w-12 h-12 cursor-pointer bg-white/20 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2"
-              >
-                <FaTelegram size={23} className="text-white" />
-              </motion.a>
+              {social?.whatsapp && (
+                <motion.a
+                  href={social.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 cursor-pointer bg-white/20 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2"
+                >
+                  <IoLogoWhatsapp size={23} className="text-white"/>
+                </motion.a>
+              )}
+              {social?.telegram && (
+                <motion.a
+                  href={social.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 cursor-pointer bg-white/20 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2"
+                >
+                  <FaTelegramPlane size={23} className="text-white"/>
+                </motion.a>
+              )}
               <motion.div
                 className="h-12 cursor-pointer bg-white flex items-center justify-center gap-2 rounded-[8px] backdrop-blur-[4] px-4 p-2"
                 onClick={() => setIsOpen(true)}
@@ -180,47 +185,59 @@ const Navbar = () => {
                 </div>
                 <div className="flex flex-col items-end gap-2 mt-2">
                   <a
-                    href={`tel:+99890-823-22-32`}
+                    href={`tel:${social?.phone_number1}`}
                     className="font-manrope sm:font-[700] font-[600] sm:text-[32px] [@media(max-height:900px)]:text-[25px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
                   >
-                    +99890-823-22-32
+                    {social?.phone_number1}
                   </a>
                   <a
-                    href={`tel:+99899-536-57-47`}
+                    href={`tel:${social?.phone_number2}`}
                     className="font-manrope sm:font-[700] font-[600] sm:text-[32px] [@media(max-height:900px)]:text-[25px] text-[25px] leading-[100%] text-[#1A1A18] hover:text-[#F07C00] transition-all duration-300"
                   >
-                    +99899-536-57-47
+                    {social?.phone_number2}
                   </a>
                 </div>
                 <div className="flex items-center justify-end mt-5 gap-2">
-                  <a 
-                    href="" 
-                    target="_blank"
-                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
-                  >
-                    <IoLogoWhatsapp size={25}/>
-                  </a>
-                  <a 
-                    href=""
-                    target="_blank"
-                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
-                  >
-                    <FaTelegramPlane size={25}/>
-                  </a>
-                  <a 
-                    href=""
-                    target="_blank"
-                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
-                  >
-                    <FaFacebook size={25}/>
-                  </a>
-                  <a 
-                    href=""
-                    target="_blank"
-                    className="w-14 h-14 group cursor-pointer bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] backdrop-blur-[4] transition-all duration-300 p-2"
-                  >
-                    <PiInstagramLogoFill size={25}/>
-                  </a>
+                  {social?.whatsapp && (
+                    <a
+                      href={social.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] transition-all duration-300 p-2"
+                    >
+                      <IoLogoWhatsapp size={25} />
+                    </a>
+                  )}
+                  {social?.telegram && (
+                    <a
+                      href={social.telegram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] transition-all duration-300 p-2"
+                    >
+                      <FaTelegramPlane size={25} />
+                    </a>
+                  )}
+                  {social?.facebook && (
+                    <a
+                      href={social.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] transition-all duration-300 p-2"
+                    >
+                      <FaFacebook size={25} />
+                    </a>
+                  )}
+                  {social?.instagram && (
+                    <a
+                      href={social.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-14 h-14 bg-[#EFEFEF] hover:bg-[#F07C00] flex items-center justify-center rounded-[8px] transition-all duration-300 p-2"
+                    >
+                      <PiInstagramLogoFill size={25} />
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

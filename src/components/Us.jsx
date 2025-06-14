@@ -61,7 +61,7 @@ const Us = () => {
 
   return (
     <div className={containerClass}>
-      <h1 className='text-[#1A1A18] text-[28px] md:text-[48px] font-[600] text-center leading-[120%] px-4'>{t('us.title')}</h1>
+      <h1 title={t('us.title')} className='text-[#1A1A18] text-[28px] md:text-[48px] font-[600] text-center leading-[120%] px-4'>{t('us.title')}</h1>
       <p className='font-[400] text-[#1A1A18] text-[18px] md:text-[20px] text-center px-4 mt-2'>
         {t('us.description')}
       </p>
@@ -76,7 +76,7 @@ const Us = () => {
           >
             <div className={containerClasses}>
               <div className='flex justify-between items-start'>
-                <h2 className='text-[#1A1A18] font-[600] font-manrope text-[25px] md:text-[32px] leading-[100%]'>
+                <h2 title={ i18n.language === "uz" ? card.title_uz : card.title_ru } className='text-[#1A1A18] font-[600] font-manrope text-[25px] md:text-[32px] leading-[100%]'>
                   { i18n.language === "uz" ? card.title_uz : card.title_ru }
                 </h2>
                 <div className="bg-[#F07C00] w-[54px] h-[54px] rounded-[15px] text-white text-[24px] flex justify-center items-center">
