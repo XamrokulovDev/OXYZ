@@ -1,5 +1,5 @@
 import { IoFunnelOutline, IoCheckmarkDoneOutline } from "react-icons/io5";
-import { FaTruck } from "react-icons/fa6";
+import { PiTruck } from "react-icons/pi";
 import { CiStar, CiClock2 } from "react-icons/ci";
 import { LuLightbulb } from "react-icons/lu";
 import { motion } from "framer-motion";
@@ -17,7 +17,7 @@ const cards = [
   {
     title_ru: "Собственный транспорт",
     title_uz: "Shaxsiy transport",
-    icon: <FaTruck />,
+    icon: <PiTruck />,
     desc_ru: "У нас есть собственные рефрижераторы, и мы работаем только с проверенными перевозчиками.",
     desc_uz: "Bizda o‘zimizga tegishli sovitkichli transport vositalari bor va faqat ishonchli tashuvchilar bilan ishlaymiz.",
   },
@@ -75,15 +75,16 @@ const Us = () => {
             className="h-full"
           >
             <div className={containerClasses}>
-              <div className='flex justify-between items-start gap-3'>
-                <h2 title={ i18n.language === "uz" ? card.title_uz : card.title_ru } className='text-[#1A1A18] font-[600] font-manrope text-[25px] md:text-[32px] leading-[100%]'>
+              <div className='flex justify-between items-start'>
+                <h2 title={ i18n.language === "uz" ? card.title_uz : card.title_ru } className='text-[#1A1A18] font-[600] font-manrope text-[20px] md:text-[32px] leading-[100%]'>
                   { i18n.language === "uz" ? card.title_uz : card.title_ru }
                 </h2>
-                <div className="bg-[#F07C00] w-[45px] md:w-[54px] h-[45px] md:h-[54px] rounded-[15px] text-white text-[24px] flex justify-center items-center">
+                <div className="shrink-0 bg-[#F07C00] w-[54px] h-[54px] rounded-[15px] 
+                text-white text-[24px] flex justify-center items-center">
                   {card.icon}
                 </div>
               </div>
-              <p className='text-[#A7A6A1] text-[20px] font-[400] font-manrope leading-[140%] mt-10'>
+              <p className='text-[#A7A6A1] text-[16px] md:text-[20px] font-[400] font-manrope leading-[140%] mt-10'>
                 { i18n.language === "uz" ? card.desc_uz : card.desc_ru }
               </p>
             </div>

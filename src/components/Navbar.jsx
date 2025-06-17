@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import logo from "../assets/Logo.webp";
+import { NavLink, useLocation } from "react-router-dom";
+import logo from "../assets/Group 9.webp";
+import logo_scroll from "../assets/Group 9.svg";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaTelegram, FaFacebook } from "react-icons/fa6";
 import { TbMenu } from "react-icons/tb";
@@ -14,10 +15,12 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
-  const [social, setSocial] = useState({});
   const _api = import.meta.env.VITE_API;
+  const [social, setSocial] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,13 +40,19 @@ const Navbar = () => {
     exit: { x: "100%" },
   };
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 0);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isWhiteBg =
+    scrolled || location.pathname === "/terms" || location.pathname === "/security";
+
   const navVariants = {
     hidden: { y: -30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
   return (
@@ -52,12 +61,16 @@ const Navbar = () => {
         variants={navVariants}
         initial="hidden"
         animate="visible"
-        className="w-full absolute left-0 top-0 z-50 p-5 md:p-8"
+        className={`w-full fixed left-0 top-0 z-50 ${
+          isWhiteBg
+            ? "bg-white shadow-md md:px-10 px-6 md:py-5 py-3"
+            : "bg-transparent md:p-8 p-5"
+        }`}
       >
         <div className="flex items-center justify-between">
           <NavLink to={"/"}>
             <motion.img
-              src={logo}
+              src={`${isWhiteBg ? logo_scroll : logo}`}
               alt="logo"
               loading="eager"
               initial={{ scale: 0.9, opacity: 0 }}
@@ -74,27 +87,29 @@ const Navbar = () => {
             >
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 bg-[#00FF00] rounded-full"></span>
-                <p className="font-manrope font-[400] text-[14px] text-white/80 leading-[100%]">
-                  {t('global.work')}
+                <p className={`font-manrope font-[400] text-[14px] leading-[100%] ${isWhiteBg ? "text-[#A7A6A1]" : "text-white/80"}`}>
+                  {t("global.work")}
                 </p>
               </div>
-              <a 
+              <a
                 href={`tel:${social?.phone_number1}`}
-                className="text-white font-manrope font-[700] text-[20px] leading-[100%]"
+                className={`font-manrope font-[700] text-[20px] leading-[100%] ${isWhiteBg ? "text-[#1A1A18]" : "text-white"}`}
               >
                 {social?.phone_number1}
               </a>
             </motion.div>
             <div className="flex items-center gap-1">
-              <Translation />
+              <div className={`w-12 h-12 cursor-pointer flex items-center justify-center rounded-[8px] backdrop-blur-[4] p-2 ${isWhiteBg ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}>
+                <Translation />
+              </div>
               {social?.whatsapp && (
                 <motion.a
                   href={social.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 cursor-pointer bg-white/20 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2"
+                  className={`w-12 h-12 cursor-pointer flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2 ${isWhiteBg ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}
                 >
-                  <IoLogoWhatsapp size={23} className="text-white"/>
+                  <IoLogoWhatsapp size={23} className="text-white" />
                 </motion.a>
               )}
               {social?.telegram && (
@@ -102,17 +117,17 @@ const Navbar = () => {
                   href={social.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 cursor-pointer bg-white/20 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2"
+                  className={`w-12 h-12 cursor-pointer flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2 ${isWhiteBg ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}
                 >
-                  <FaTelegramPlane size={23} className="text-white"/>
+                  <FaTelegramPlane size={23} className="text-white" />
                 </motion.a>
               )}
               <motion.div
-                className="h-12 cursor-pointer bg-white flex items-center justify-center gap-2 rounded-[8px] backdrop-blur-[4] px-4 p-2"
+                className={`h-12 cursor-pointer flex items-center justify-center gap-2 rounded-[8px] backdrop-blur-[4] px-4 p-2 ${isWhiteBg ? "text-white bg-[#1A1A18]" : "bg-white text-[#1A1A18]"}`}
                 onClick={() => setIsOpen(true)}
               >
-                <p className="text-[#1A1A18] font-manrope font-[400] text-[16px] leading-[100%]">
-                  {t('global.menu')}
+                <p className="font-manrope font-[400] text-[16px] leading-[100%]">
+                  {t("global.menu")}
                 </p>
                 <TbMenu size={20} />
               </motion.div>
@@ -120,7 +135,7 @@ const Navbar = () => {
           </div>
         </div>
       </motion.nav>
-      {/* Sidebar with overlay */}
+
       <AnimatePresence>
         {isOpen && (
           <>
@@ -145,7 +160,7 @@ const Navbar = () => {
                 className="absolute top-12 right-10 flex items-center cursor-pointer gap-2"
               >
                 <p className="text-[#1A1A18] font-manrope font-[400] text-[16px] leading-[100%]">
-                  {t('global.close')}
+                  {t("global.close")}
                 </p>
                 <IoClose size={21} />
               </button>
@@ -167,10 +182,7 @@ const Navbar = () => {
                           }`
                         }
                       >
-                        {i18n.language === "uz"
-                          ? item.title_uz
-                          : item.title_ru
-                        }
+                        {i18n.language === "uz" ? item.title_uz : item.title_ru}
                       </NavLink>
                     </motion.li>
                   ))}

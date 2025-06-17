@@ -22,7 +22,7 @@ const TranslationCustom = () => {
   const flag = otherLang === "uz" ? uzb : rus;
 
   return (
-    <button onClick={handleToggleLanguage} className="w-12 h-12 cursor-pointer bg-white/20 flex items-center justify-center rounded-[8px] backdrop-blur-[4] p-2">
+    <button onClick={handleToggleLanguage} className="w-12 h-12 cursor-pointer flex items-center justify-center rounded-[8px]">
       <img
         src={flag}
         alt={otherLang}

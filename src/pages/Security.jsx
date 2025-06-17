@@ -26,7 +26,7 @@ const Security = () => {
   }, [pathname]);
 
   return (
-    <div className="max-w-4xl mx-auto font-manrope text-[#1A1A18] font-[500] flex flex-col items-start md:gap-10 gap-5 md:py-20 p-5">
+    <div className="max-w-4xl mx-auto font-manrope text-[#1A1A18] font-[500] flex flex-col items-start md:gap-10 gap-5 md:py-20 mt-20 p-5">
         <p>{t('security.title_1')}</p>
         <p>{t('security.title_2')}</p>
         <p>{t('security.title_3')}</p>

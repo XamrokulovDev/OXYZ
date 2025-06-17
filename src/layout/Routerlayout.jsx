@@ -6,10 +6,7 @@ import { useEffect, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 
 const Routerlayout = () => {
-  const location = useLocation();
-  const hideNavRoutes = ["/security", "/terms"];
   const [showScrollBtn, setShowScrollBtn] = useState(false);
-  const shouldHideNav = hideNavRoutes.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +24,7 @@ const Routerlayout = () => {
   return (
     <div>
       <ScrollToTop />
-      {!shouldHideNav && <Navbar />}
+      <Navbar />
       <Outlet />
       <Footer />
       {showScrollBtn && (
