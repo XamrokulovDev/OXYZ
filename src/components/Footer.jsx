@@ -7,7 +7,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
-import logo from "../assets/Group 9.webp";
+import logo from "../assets/Group 9.svg";
 import { NavbarList } from "../../data/data";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";

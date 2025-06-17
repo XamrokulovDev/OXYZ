@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/Group 9.webp";
-import logo_scroll from "../assets/Group 9.svg";
+import logo from "../assets/logo.svg";
+import logo_scroll from "../assets/Logo.svg";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { FaTelegram, FaFacebook } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa6";
 import { TbMenu } from "react-icons/tb";
 import { IoClose } from "react-icons/io5";
 import { PiInstagramLogoFill } from "react-icons/pi";
@@ -23,118 +23,110 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${_api}/api/social-media`);
-        setSocial(response.data.links);
-      } catch (error) {
-        console.error("Socials ma’lumotini olishda xatolik:", error);
-      }
-    };
-    fetchData();
+    axios.get(`${_api}/api/social-media`).then(r => setSocial(r.data.links)).catch(() => {});
   }, []);
 
-  const sidebarVariants = {
-    hidden: { x: "100%" },
-    visible: { x: 0 },
-    exit: { x: "100%" },
-  };
+  const THRESHOLD = 300;
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 0);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const f = () => setScrolled(window.scrollY > THRESHOLD);
+    f();
+    window.addEventListener("scroll", f);
+    return () => window.removeEventListener("scroll", f);
   }, []);
 
-  const isWhiteBg =
-    scrolled || location.pathname === "/terms" || location.pathname === "/security";
+  const isFixed = scrolled || location.pathname === "/terms" || location.pathname === "/security";
 
   const navVariants = {
-    hidden: { y: -30, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+    hidden: { y: -30, opacity: 0, transition: { duration: 0.4, ease: "easeInOut" } },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
   };
 
   return (
     <>
-      <motion.nav
-        variants={navVariants}
-        initial="hidden"
-        animate="visible"
-        className={`w-full fixed left-0 top-0 z-50 ${
-          isWhiteBg
-            ? "bg-white shadow-md md:px-10 px-6 md:py-5 py-3"
-            : "bg-transparent md:p-8 p-5"
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          <NavLink to={"/"}>
-            <motion.img
-              src={`${isWhiteBg ? logo_scroll : logo}`}
-              alt="logo"
-              loading="eager"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4 }}
-            />
-          </NavLink>
-          <div className="flex items-center gap-5">
-            <motion.div
-              className="flex flex-col items-end gap-2 max-md:hidden"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-[#00FF00] rounded-full"></span>
-                <p className={`font-manrope font-[400] text-[14px] leading-[100%] ${isWhiteBg ? "text-[#A7A6A1]" : "text-white/80"}`}>
-                  {t("global.work")}
-                </p>
-              </div>
-              <a
-                href={`tel:${social?.phone_number1}`}
-                className={`font-manrope font-[700] text-[20px] leading-[100%] ${isWhiteBg ? "text-[#1A1A18]" : "text-white"}`}
-              >
-                {social?.phone_number1}
-              </a>
-            </motion.div>
-            <div className="flex items-center gap-1">
-              <div className={`w-12 h-12 cursor-pointer flex items-center justify-center rounded-[8px] backdrop-blur-[4] p-2 ${isWhiteBg ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}>
-                <Translation />
-              </div>
-              {social?.whatsapp && (
-                <motion.a
-                  href={social.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-12 h-12 cursor-pointer flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2 ${isWhiteBg ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}
-                >
-                  <IoLogoWhatsapp size={23} className="text-white" />
-                </motion.a>
-              )}
-              {social?.telegram && (
-                <motion.a
-                  href={social.telegram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-12 h-12 cursor-pointer flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2 ${isWhiteBg ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}
-                >
-                  <FaTelegramPlane size={23} className="text-white" />
-                </motion.a>
-              )}
+      <AnimatePresence initial={false} mode="wait">
+        <motion.nav
+          key={isFixed ? "fixed" : "absolute"}
+          variants={navVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          className={`w-full left-0 top-0 z-50 ${
+            isFixed
+              ? "fixed bg-white shadow-md md:px-10 px-6 md:py-5 py-3"
+              : "absolute bg-transparent md:p-8 p-5"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <NavLink to={"/"}>
+              <motion.img
+                src={isFixed ? logo_scroll : logo}
+                alt="logo"
+                loading="eager"
+                className="md:w-45 w-35"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              />
+            </NavLink>
+            <div className="flex items-center gap-5">
               <motion.div
-                className={`h-12 cursor-pointer flex items-center justify-center gap-2 rounded-[8px] backdrop-blur-[4] px-4 p-2 ${isWhiteBg ? "text-white bg-[#1A1A18]" : "bg-white text-[#1A1A18]"}`}
-                onClick={() => setIsOpen(true)}
+                className="flex flex-col items-end gap-2 max-md:hidden"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
               >
-                <p className="font-manrope font-[400] text-[16px] leading-[100%]">
-                  {t("global.menu")}
-                </p>
-                <TbMenu size={20} />
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 bg-[#00FF00] rounded-full"></span>
+                  <p className={`font-manrope font-[400] text-[14px] leading-[100%] ${isFixed ? "text-[#A7A6A1]" : "text-white/80"}`}>
+                    {t("global.work")}
+                  </p>
+                </div>
+                <a
+                  href={`tel:${social?.phone_number1}`}
+                  className={`font-manrope font-[700] text-[20px] leading-[100%] ${isFixed ? "text-[#1A1A18]" : "text-white"}`}
+                >
+                  {social?.phone_number1}
+                </a>
               </motion.div>
+              <div className="flex items-center gap-1">
+                <div className={`w-12 h-12 flex items-center justify-center rounded-[8px] backdrop-blur-[4] p-2 ${isFixed ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}>
+                  <Translation />
+                </div>
+                {social?.whatsapp && (
+                  <motion.a
+                    href={social.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-12 h-12 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2 ${isFixed ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}
+                  >
+                    <IoLogoWhatsapp size={23} className="text-white" />
+                  </motion.a>
+                )}
+                {social?.telegram && (
+                  <motion.a
+                    href={social.telegram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-12 h-12 flex items-center justify-center rounded-[8px] backdrop-blur-[4] max-md:hidden p-2 ${isFixed ? "bg-[#1A1A181A]/70" : "bg-white/20"}`}
+                  >
+                    <FaTelegramPlane size={23} className="text-white" />
+                  </motion.a>
+                )}
+                <motion.div
+                  className={`h-12 flex items-center justify-center gap-2 rounded-[8px] backdrop-blur-[4] px-4 p-2 ${isFixed ? "text-white bg-[#1A1A18]" : "bg-white text-[#1A1A18]"}`}
+                  onClick={() => setIsOpen(true)}
+                >
+                  <p className="font-manrope font-[400] text-[16px] leading-[100%]">
+                    {t("global.menu")}
+                  </p>
+                  <TbMenu size={20} />
+                </motion.div>
+              </div>
             </div>
           </div>
-        </div>
-      </motion.nav>
+        </motion.nav>
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (
@@ -148,16 +140,15 @@ const Navbar = () => {
             />
             <motion.div
               className="sm:w-[500px] w-full h-screen pb-10 bg-white fixed top-0 right-0 z-[99]"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={sidebarVariants}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={e => e.stopPropagation()}
             >
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute top-12 right-10 flex items-center cursor-pointer gap-2"
+                className="absolute top-12 right-10 flex items-center gap-2"
               >
                 <p className="text-[#1A1A18] font-manrope font-[400] text-[16px] leading-[100%]">
                   {t("global.close")}
@@ -165,8 +156,8 @@ const Navbar = () => {
                 <IoClose size={21} />
               </button>
               <div className="sm:mt-50 mt-40 pr-10">
-                <ul className="group flex flex-col items-end gap-5">
-                  {NavbarList?.map((item, i) => (
+                <ul className="flex flex-col items-end gap-5">
+                  {NavbarList.map((item, i) => (
                     <motion.li
                       key={item.id}
                       initial={{ opacity: 0, x: 30 }}

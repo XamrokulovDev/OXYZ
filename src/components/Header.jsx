@@ -69,7 +69,7 @@ const Header = () => {
               onClick={handleOpenModal}
               className="group relative bg-white text-orange-500 rounded-[8px] flex items-center overflow-hidden cursor-pointer gap-3 pl-7 p-2"
             >
-              <span className="flex items-center text-[#1A1A18] font-[400] md:text-[20px] text-[16px] leading-[100%] gap-3">
+              <span className="flex items-center text-[#1A1A18] font-[400] font-manrope md:text-[20px] text-[16px] leading-[100%] gap-3">
                 {t('global.button')}
                 <span className="bg-orange-500 group-hover:bg-orange-600 transition-all duration-300 text-white p-4 text-xl rounded-sm">
                   <IoIosArrowForward size={20} />
