@@ -26,7 +26,7 @@ const Navbar = () => {
     axios.get(`${_api}/api/social-media`).then(r => setSocial(r.data.links)).catch(() => {});
   }, []);
 
-  const THRESHOLD = 300;
+  const THRESHOLD = 100;
 
   useEffect(() => {
     const f = () => setScrolled(window.scrollY > THRESHOLD);
