@@ -1,11 +1,37 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import container from '../assets/container.webp';
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import DOMPurify from 'dompurify'
 
 const Article = () => {
+  const [news, setNews] = useState({})
+  const { i18n } = useTranslation()
+  const _api = import.meta.env.VITE_API
+  const { id } = useParams()
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+    axios
+      .get(`${_api}/api/news/${id}`)
+      .then((res) => setNews(res.data.data))
+      .catch((err) => console.error('Xatolik:', err))
+  }, [_api, id])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [])
+
+  const getCleanDesc = () => {
+    const raw =
+      i18n.language === 'uz'
+        ? news?.description_uz || ''
+        : i18n.language === 'ru'
+        ? news?.description_ru || ''
+        : news?.description_en || ''
+
+    return DOMPurify.sanitize(raw, { FORBID_ATTR: ['style'] })
+  }
 
   return (
     <motion.div
@@ -15,62 +41,32 @@ const Article = () => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <motion.h1
-        className="text-[#1A1A18] font-[600] text-[32px] md:text-[40px] lg:text-[48px] leading-[120%] font-manrope mt-20"
+        className="text-[#1A1A18] font-[600] text-[28px] md:text-[40px] lg:text-[48px] leading-[120%] font-manrope mt-20"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        Примерный текст статьи
+        {i18n.language === 'uz' ? news.title_uz : news.title_ru}
       </motion.h1>
-
       <motion.img
-        src={container}
-        alt=""
-        className="my-[40px] w-full object-contain"
-        loading='lazy'
+        src={`${_api}/uploads/${news?.image}`}
+        alt={i18n.language === 'uz' ? news.title_uz : news.title_ru}
+        loading="lazy"
+        className="w-full h-[300px] md:h-[500px] object-cover my-15"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.6 }}
       />
 
-      <motion.p
-        className="font-[400] text-[20px] text-[#1A1A18] leading-[32px] font-manrope"
+      <motion.div
+        className="font-[400] text-[16px] md:text-[20px] text-[#1A1A18] leading-[32px] font-manrope"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
-      >
-        Значимость этих проблем настолько очевидна, что реализация намеченных плановых заданий играет важную роль в
-          формировании дальнейших направлений развития. Значимость этих проблем настолько очевидна, что постоянный
-          количественный рост и сфера нашей активности влечет за собой процесс внедрения и модернизации позиций,
-          занимаемых участниками в отношении поставленных задач. Задача организации, в особенности же рамки и место
-          обучения кадров позволяет оценить значение направлений прогрессивного развития. Идейные соображения высшего
-          порядка, а также дальнейшее развитие различных форм деятельности требуют от нас анализа систем массового
-          участия. Разнообразный и богатый опыт постоянное информационно-пропагандистское обеспечение нашей деятельности
-          в значительной степени обуславливает создание систем массового участия.
-          <br />
-          <br />
-          Не следует, однако забывать, что дальнейшее развитие различных форм деятельности позволяет оценить значение
-          системы обучения кадров, соответствует насущным потребностям. Задача организации, в особенности же укрепление
-          и развитие структуры требуют определения и уточнения дальнейших направлений развития. Задача организации, в
-          особенности же консультация с широким активом в значительной степени обуславливает создание систем массового
-          участия. С другой стороны рамки и место обучения кадров представляет собой интересный эксперимент проверки
-          системы обучения кадров, соответствует насущным потребностям. Таким образом укрепление и развитие структуры
-          влечет за собой процесс внедрения и модернизации направлений прогрессивного развития. Разнообразный и богатый
-          опыт начало повседневной работы по формированию позиции позволяет оценить значение систем массового участия.
-          <br />
-          <br />
-          Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль в
-          формировании системы обучения кадров, соответствует насущным потребностям. Повседневная практика показывает,
-          что постоянный количественный рост и сфера нашей активности требуют определения и уточнения форм развития.
-          Равным образом постоянный количественный рост и сфера нашей активности представляет собой интересный
-          эксперимент проверки соответствующий условий активизации. С другой стороны новая модель организационной
-          деятельности представляет собой интересный эксперимент проверки новых предложений. С другой стороны укрепление
-          и развитие структуры требуют определения и уточнения существенных финансовых и административных условий.
-          Разнообразный и богатый опыт новая модель организационной деятельности позволяет оценить значение систем
-          массового участия.
-      </motion.p>
+        dangerouslySetInnerHTML={{ __html: getCleanDesc() }}
+      />
     </motion.div>
-  );
-};
+  )
+}
 
 export default Article;

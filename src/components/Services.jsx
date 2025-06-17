@@ -40,15 +40,14 @@ const Services = () => {
     <div className='container mx-auto px-4'>
       <h1 title={t('services.title')} className='text-[28px] md:text-[48px] font-[600] text-[#1A1A18] text-center leading-[120%]'>{t('services.title')}</h1>
       <p className='text-[#1A1A18] font-[400] text-[16px] md:text-[20px] text-center leading-[140%] mt-2'>{t('services.description')}</p>
-      <section className='mt-10 grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center transition-all'>
+      <section className='mt-10 grid gap-6 grid-cols-3 max-md:grid-cols-1 max-xl:grid-cols-2 justify-items-center transition-all'>
         {servicesData.map((service, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: service.delay }}
             viewport={{ once: true }}
-            className="group relative w-full h-[600px] max-sm:h-[400px] max-2xl:h-[450px] rounded-xl overflow-hidden cursor-pointer transition-all duration-500"
+            className="group relative w-full h-[530px] max-sm:h-[400px] max-3xl:h-[450px] rounded-xl overflow-hidden cursor-pointer transition-all duration-500"
           >
             <NavLink to="/services">
             <img

@@ -43,21 +43,24 @@ function Statistics() {
     <main className="bg-[#F7F7F6] py-20 my-20">
       <div className="container mx-auto px-4 flex flex-col-reverse lg:flex-row items-stretch gap-3">
         <motion.div
-          className="bg-white p-6 md:p-10 rounded-2xl w-full lg:w-1/2"
+          className="bg-white rounded-2xl w-full lg:w-1/2 md:p-10 p-6"
           initial={{ opacity: 0, x: -80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h1 title={t('statistics.title')} className="font-[500] md:text-[36px] text-[28px] leading-[120%] font-manrope text-[#1A1A18] mb-4">
+          <h1 title={t('statistics.title')} className="font-[500] md:text-[36px] text-[28px] leading-[120%] font-manrope text-[#1A1A18]">
             {t('statistics.title')}
           </h1>
-          <div className="flex flex-col lg:gap-10 gap-5 lg:mt-20">
-            <p className="text-[#1A1A18] font-[400] font-manrope md:text-[18px] text-[16px] leading-[140%]">
+          <div className="flex flex-col justify-between gap-10 mt-10">
+            <h3 title={t('statistics.description_1')} className="text-[#1A1A18] font-[500] font-manrope md:text-[23px] text-[18px] leading-[140%]">
               {t('statistics.description_1')}
-            </p>
+            </h3>
             <p className="text-[#1A1A18] font-[400] font-manrope md:text-[18px] text-[16px] leading-[140%]">
               {t('statistics.description_2')}
+            </p>
+            <p className="text-[#1A1A18] font-[400] font-manrope md:text-[18px] text-[16px] leading-[140%]">
+              {t('statistics.description_3')}
             </p>
           </div>
         </motion.div>

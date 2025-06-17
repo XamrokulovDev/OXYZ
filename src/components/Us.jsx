@@ -75,11 +75,11 @@ const Us = () => {
             className="h-full"
           >
             <div className={containerClasses}>
-              <div className='flex justify-between items-start'>
+              <div className='flex justify-between items-start gap-3'>
                 <h2 title={ i18n.language === "uz" ? card.title_uz : card.title_ru } className='text-[#1A1A18] font-[600] font-manrope text-[25px] md:text-[32px] leading-[100%]'>
                   { i18n.language === "uz" ? card.title_uz : card.title_ru }
                 </h2>
-                <div className="bg-[#F07C00] w-[54px] h-[54px] rounded-[15px] text-white text-[24px] flex justify-center items-center">
+                <div className="bg-[#F07C00] w-[45px] md:w-[54px] h-[45px] md:h-[54px] rounded-[15px] text-white text-[24px] flex justify-center items-center">
                   {card.icon}
                 </div>
               </div>

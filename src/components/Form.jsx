@@ -405,7 +405,7 @@ const Form = () => {
                       <input
                         id="weight"
                         type="text"
-                        placeholder={t("form.placeholder_3")}
+                        placeholder={t("form.placeholder_4")}
                         value={formData.weight}
                         onChange={(e) => handleInputChange("weight", e.target.value)}
                         className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${
@@ -424,7 +424,7 @@ const Form = () => {
                       <input
                         id="transport"
                         type="text"
-                        placeholder={t("form.placeholder_4")}
+                        placeholder={t("form.placeholder_5")}
                         value={formData.transport}
                         onChange={(e) => handleInputChange("transport", e.target.value)}
                         className={`w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400 ${

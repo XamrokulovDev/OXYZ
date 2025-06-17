@@ -1,44 +1,43 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import ScrollToTop from "../components/ScrollToTop"; 
+import ScrollToTop from "../components/ScrollToTop";
 import { useEffect, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 
 const Routerlayout = () => {
+  const location = useLocation();
+  const hideNavRoutes = ["/security", "/terms"];
   const [showScrollBtn, setShowScrollBtn] = useState(false);
+  const shouldHideNav = hideNavRoutes.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 300) {
-        setShowScrollBtn(true);
-      } else {
-        setShowScrollBtn(false);
-      }
+      setShowScrollBtn(window.pageYOffset > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   return (
     <div>
       <ScrollToTop />
-      <Navbar />
+      {!shouldHideNav && <Navbar />}
       <Outlet />
       <Footer />
       {showScrollBtn && (
         <div className="cursor-pointer rounded-full w-13 h-13 flex items-center justify-center shadow-lg border border-gray-200 bg-white fixed bottom-12 right-12 max-lg:right-4 max-lg:bottom-5 z-[97]">
           <button
             onClick={scrollToTop}
-            className="text-orange-500 cursor-pointer"
+            className="text-orange-500"
             aria-label="Scroll to top"
           >
-            <IoIosArrowUp size={23} className=" cursor-pointer"/>
+            <IoIosArrowUp size={23} />
           </button>
         </div>
       )}

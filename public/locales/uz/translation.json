@@ -6,13 +6,13 @@
     "work": "Dsh–Shb, 9:00–18:00"
   },
   "schema": {
-      "header": {
-           "home": "Bosh sahifa",
-           "about": "Biz haqimizda",
-           "services": "Xizmatlar",
-           "news": "Yangiliklar",
-           "contact": "Kontaktlar"
-      }
+    "header": {
+      "home": "Bosh sahifa",
+      "about": "Biz haqimizda",
+      "services": "Xizmatlar",
+      "news": "Yangiliklar",
+      "contact": "Kontaktlar"
+    }
   }, 
   "header": {
     "title_1": "OXYZ – ishonsa bo‘ladigan xalqaro logistika,",
@@ -82,8 +82,9 @@
   },
   "statistics": {
     "title": "OXYZ kompaniyasi haqida",
-    "description_1": "Sizning xotirjamligingiz — bizning ishimiz. Biz yuk tashish bilan shug‘ullanuvchi logistika kompaniyasimiz, lekin shunchaki yuk tashimaymiz, balki sizning biznesingiz uchun tushunarli, halol va ishonchli jarayonlarni yaratamiz.",
-    "description_2": "2022-yildan beri biz kompaniyalarga Yevropa va MDH davlatlaridan yuklarini muammosiz va o‘z vaqtida yetkazib berishda yordam beramiz. Bizning asosiy yo‘nalishimiz — tentalangan transport orqali yuk tashish: uskunalar, texnika, xalq iste’moli mollari va hokazo."
+    "description_1": "Sizning xotirjamligingiz — bizning ishimiz.",
+    "description_2": "Biz — bu shunchaki yuk tashuvchi emas, balki biznesingiz uchun tushunarli, halol va ishonchli jarayonlarni yaratadigan logistika kompaniyasimiz.",
+    "description_3": "2022-yildan buyon biz Yevropa va MDH davlatlaridan yuklarni og‘riqsiz va o‘z vaqtida yetkazib berishda kompaniyalarga yordam berib kelmoqdamiz. Bizning asosiy yo‘nalishimiz — muzlatkichli (refrijeratorli) transportda tez buziladigan mahsulotlarni tashishdir. Shuningdek, biz tentli transport vositalarida ham yuk tashishni tashkil qilamiz: uskunalar, texnika, xalq iste’mol mollari va hokazo."
   },
   "info": {
     "title": "Shaffof jarayon — kutilgan natija",
@@ -144,5 +145,24 @@
         "description": "Kunning o‘zida javob beramiz: yukingizni yetkazib berish narxini bilish uchun formani to‘ldiring yoki bizga qo‘ng‘iroq qiling.",
         "keywords": "OXYZ kontaktlari, logistika kompaniyasi, yetkazib berish hisob‑kitobi, xalqaro tashuvlar"
       }
+  },
+  "terms": {
+    "date": "Maxfiylik siyosati  Yangilangan sana: 16.06.2025",
+    "title_1": "OXYZ kompaniyasi (MCHJ «UFD-WORLD SERVICE») sizning maxfiylik huquqingizni hurmat qiladi. Biz shaxsiy ma'lumotlaringizni qayta ishlashda   xavfsizlik va shaffoflikni ta'minlashga intilamiz.",
+    "title_2": "1. Qanday ma'lumotlarni yig'amiz? Biz saytdagi formalarni to'ldirishda o'zingiz ko'ngilli ravishda taqdim etgan quyidagi ma'lumotlarni yig'amiz:   Ism va telefon raqami; Yuk marshruti (qayerdan va qayergacha); Yuk xususiyati va og'irligi; Kerakli transport turi.",
+    "title_3": "2. Ma'lumotlaringizni nima maqsadda foydalanamiz? Ma'lumotlar faqat quyidagi maqsadlarda ishlatiladi: Konsultatsiya berish uchun operatorning siz   bilan bog'lanishi; Yuk tashish bo'yicha individual taklif tayyorlash; Xizmat sifatini yaxshilash. Ma'lumotlaringizni qonunda nazarda tutilgan holatlar bundan   mustasno, uchinchi shaxslarga bermaymiz.",
+    "title_4": "3. Ma'lumotlaringizni qanday himoya qilamiz? Ma'lumotlaringiz himoyalangan muhitda saqlanadi va faqat kompaniyaning vakolatli xodimlari tomonidan   ishlatiladi. Biz ma'lumotlarning sizib chiqishi, o'zgarishi yoki ruxsatsiz kirishni oldini olish uchun barcha zarur choralarni ko'ramiz.",
+    "title_5": "4. Cookie‑fayllardan foydalanish. Trafikni tahlil qilish va sayt ishini yaxshilash uchun cookie‑fayllardan foydalanishimiz mumkin. Brauzeringiz   sozlamalarida cookie‑larni o'chirib qo'yishingiz mumkin.",
+    "title_6": "5. Sizning huquqlaringiz. Siz quyidagilarga haqlisiz: Qaysi ma'lumotlarni saqlayotganimiz haqida so'rov yuborish; Ma'lumotlaringizni tuzatish   yoki o'chirib tashlashni talab qilish.",
+    "title_7": "Ma'lumotlarni qayta ishlashga bergan roziligingizni bekor qilish. Buning uchun biz bilan bog'laning:"
+  },
+  "security": {
+    "title_1": "Foydalanish shartlari   Yangilangan sana: 16.06.2025",
+    "title_2": "Logistika kompaniyasi OXYZ (MCHJ «UFD-WORLD SERVICE») saytiga xush kelibsiz. Ushbu saytni ishlatish orqali quyidagi shartlarga rozilik bildirasiz.  ",
+    "title_3": "1. Sayt maqsadi. Sayt kompaniya xizmatlari haqida ma'lumot berish va potensial mijozlar bilan aloqa o'rnatish uchun mo'ljallangan. Saytdagi   barcha ma'lumotlar faqat axborot xarakteriga ega bo'lib, ommaviy oferta hisoblanmaydi.",
+    "title_4": "2. Formadan foydalanish. Saytdagi formani to'ldirishda siz: Ishonchli ma'lumotlar taqdim etasiz; Ularni aloqa va konsultatsiya maqsadida qayta   ishlashga rozilik bildirasiz.",
+    "title_5": "3. Intellektual mulk. Saytdagi barcha materiallar (matnlar, rasmlar, logotiplar va h.k.) OXYZ'ga tegishli yoki qonuniy asosda foydalanilgan.   Yozma ruxsatsiz nusxa ko'chirish yoki tarqatish taqiqlanadi.",
+    "title_6": "4. Mas'uliyatni cheklash. OXYZ kompaniyasi quyidagilar uchun javobgar emas: Sayt ishidagi texnik nosozliklar; Mutaxassislarimiz bilan   aniqlashtirmasdan saytdagi ma'lumotlardan foydalanish natijasida yetkazilgan zarar.",
+    "title_7": "5. Shartlarni o'zgartirish. Biz ushbu shartlarni istalgan vaqtda yangilash huquqini o'zimizda saqlab qolamiz. Har doim eng so'nggi versiya shu   sahifada mavjud."
   }
 }

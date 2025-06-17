@@ -6,6 +6,8 @@ import News from "./pages/News";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Articles from "./pages/Articles";
+import Security from "./pages/Security";
+import Terms from "./pages/Terms";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -18,7 +20,9 @@ const App = () => {
         { path: "/services", element: <Services /> },
         { path: "/contact", element: <Contact /> },
         { path: "/news", element: <News /> },
-        { path: "/new/:id", element: <Articles /> }
+        { path: "/new/:id", element: <Articles /> },
+        { path: "/terms", element: <Security /> },
+        { path: "/security", element: <Terms /> }
       ]
     }
   ]);

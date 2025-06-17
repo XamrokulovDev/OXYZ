@@ -1,24 +1,53 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import { motion } from 'framer-motion'
-import image from '../assets/NewCardImg.webp'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import axios from 'axios'
+import { stripHtml } from 'string-strip-html'
+import DOMPurify from 'dompurify'
+
+const formatDate = (isoString) => {
+  if (!isoString) return ''
+  const date = new Date(isoString)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
+  return `${day}.${month}.${year}`
+}
 
 const HomeCards = () => {
-  const swiperRef = useRef(null);
-  const { t } = useTranslation();
-  const _api = import.meta.env.VITE_API;
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [showPagination, setShowPagination] = useState(false);
+  const swiperRef = useRef(null)
+  const { t, i18n } = useTranslation()
+  const _api = import.meta.env.VITE_API
+  const [news, setNews] = useState([])
+  const [activeIdx, setActiveIdx] = useState(0)
+  const [showPagination, setShowPagination] = useState(false)
 
-  const news = [
-    { id: 1, title: 'Открыли новое направление — доставка в Китай', text: 'Мы расширили географию перевозок: теперь доступны международные грузоперевозки по странам Европы. Работаем с полным сопровождением и оформлением документов. Уже в пути — первые грузы наших клиентов!', date: '03.06.2025', img: image },
-    { id: 2, title: 'Запустили онлайн-отслеживание грузов',        text: 'Мы расширили географию перевозок: теперь доступны международные грузоперевозки по странам Европы. Работаем с полным сопровождением и оформлением документов. Уже в пути — первые грузы наших клиентов!', date: '01.06.2025', img: image },
-    { id: 3, title: 'Снижены тарифы на междугородние перевозки',    text: 'Мы расширили географию перевозок: теперь доступны международные грузоперевозки по странам Европы. Работаем с полным сопровождением и оформлением документов. Уже в пути — первые грузы наших клиентов!', date: '29.05.2025', img: image },
-  ]
+  useEffect(() => {
+    axios
+      .get(`${_api}/api/news`)
+      .then((res) => {
+        const newsData = res.data.data
+        setNews(newsData)
+      })
+      .catch((err) => console.error('Xatolik:', err))
+  }, [_api])
+
+  const getExcerpt = (item, maxLen = 200) => {
+    const raw =
+      i18n.language === 'uz'
+        ? item?.description_uz || ''
+        : i18n.language === 'ru'
+        ? item?.description_ru || ''
+        : item?.description_en || ''
+
+    const cleanHtml = DOMPurify.sanitize(raw, { FORBID_ATTR: ['style'] })
+    const plain = stripHtml(cleanHtml).result.trim()
+    return plain.length > maxLen ? plain.slice(0, maxLen) + '…' : plain
+  }
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -44,6 +73,7 @@ const HomeCards = () => {
             {t('cards.description_1')} <br /> {t('cards.description_2')}
           </p>
         </motion.div>
+
         <Swiper
           modules={[Autoplay]}
           onSwiper={(sw) => {
@@ -61,14 +91,14 @@ const HomeCards = () => {
           spaceBetween={20}
           slidesPerView={3}
           breakpoints={{
-            0:   { slidesPerView: 1 },
+            0: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
-            1280:{ slidesPerView: 3 },
+            1280: { slidesPerView: 3 },
           }}
         >
           {news.map((item, idx) => (
-            <SwiperSlide key={item.id}>
-              <NavLink to={`/new/${item.id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <SwiperSlide key={item._id}>
+              <NavLink to={`/new/${item._id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -77,20 +107,29 @@ const HomeCards = () => {
                   className="h-[572px] bg-white rounded-[16px] border border-[#E5E4E2] flex flex-col justify-between p-2"
                 >
                   <div>
-                    <img src={item.img} alt="news" loading="lazy"
-                         className="w-full h-[280px] object-cover rounded-[16px] mb-4" />
+                    <img
+                      src={`${_api}/uploads/${item?.image}`}
+                      alt={i18n.language === 'uz' ? item.title_uz : item.title_ru}
+                      loading="lazy"
+                      className="w-full h-[280px] object-cover rounded-[16px] mb-4"
+                    />
                     <span className="block px-3">
-                      <h2 title={item.title} className="text-[#1A1A18] text-[24px] font-[600] font-manrope line-clamp-2 mb-3">
-                        {item.title}
+                      <h2
+                        title={item.title}
+                        className="text-[#1A1A18] text-[24px] font-[600] font-manrope line-clamp-2 mb-3"
+                      >
+                        {i18n.language === 'uz' ? item.title_uz : item.title_ru}
                       </h2>
-                      <p className="text-[#A7A6A1] text-[16px] font-manrope line-clamp-4 mb-6">
-                        {item.text}
+                      <p className="text-[#A7A6A1] text-[16px] font-manrope line-clamp-3 mb-6">
+                        {getExcerpt(item)}
                       </p>
                     </span>
                   </div>
-                  <div className="flex justify-between items-center px-3 mb-3">
-                    <p className="text-[#1A1A18] underline text-[20px]">Читать статью</p>
-                    <p className="text-[#A7A6A1] text-[14px]">{item.date}</p>
+                  <div className="flex justify-between items-center px-3 mb-2">
+                    <p className="text-[#1A1A18] underline text-[20px]">{t('cards.button')}</p>
+                    <p className="text-[#A7A6A1] text-[14px] font-[500] font-manrope">
+                      {formatDate(item.createdAt)}
+                    </p>
                   </div>
                 </motion.div>
               </NavLink>

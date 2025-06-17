@@ -106,7 +106,7 @@ const Footer = () => {
         <hr className="border-gray-700 mb-20 " />
 
         <motion.div
-          className="flex gap-10 items-start max-md:justify-start justify-between flex-wrap"
+          className="flex gap-10 items-start max-md:justify-start justify-between max-xl:flex-wrap"
           variants={variants}
         >
           <div>
@@ -247,14 +247,14 @@ const Footer = () => {
           <div>© {years} {t('footer.years')}</div>
           <div className="flex flex-col md:flex-row md:mt-0 items-center">
             <NavLink
-              to="/"
+              to="/terms"
               className="hover:underline hover:-translate-y-[1px] transition duration-300"
             >
               {t('footer.description_1')}
             </NavLink>
             <span className="hidden md:inline mx-1">|</span>
             <NavLink
-              to="/"
+              to="/security"
               className="hover:underline hover:-translate-y-[1px] transition duration-300"
             >
               {t('footer.description_2')}

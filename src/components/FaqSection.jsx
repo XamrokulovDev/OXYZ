@@ -19,22 +19,22 @@ const FaqSection = () => {
     id: 1,
     question_ru: "Сколько времени занимает доставка груза?",
     question_uz: "Yuk yetkazib berish qancha vaqt oladi?",
-    answer_ru: "Сроки зависят от региона назначения, объёма и типа перевозки. Внутрироссийские доставки — от нескольких часов. Международные и межконтинентальные — от 1 дня до нескольких недель. Мы всегда заранее сообщаем ориентировочные сроки и держим вас в курсе на каждом этапе.",
-    answer_uz: "Yetkazib berish muddati manzil regioni, yuk hajmi va tashish turiga bog‘liq. Rossiya ichidagi yetkazmalar bir necha soatdan boshlanadi. Xalqaro va qit'alararo yetkazmalar esa 1 kundan bir necha haftagacha davom etadi. Biz sizga taxminiy muddatlarni oldindan aytamiz va har bosqichda xabardor qilib boramiz."
+    answer_ru: "Сроки зависят от региона назначения, объёма и типа перевозки. Международные — от 1 дня до нескольких недель. Мы всегда заранее сообщаем ориентировочные сроки и держим вас в курсе на каждом этапе.",
+    answer_uz: "Yetkazib berish muddati manzil mintaqasi, hajmi va tashish turiga bog‘liq. Xalqaro yetkazib berish 1 kundan bir necha haftagacha davom etadi. Biz har doim taxminiy muddatlarni oldindan bildiramiz va har bir bosqichda sizni xabardor qilib boramiz."
   },
   {
     id: 2,
     question_ru: "Можно ли отследить мой груз?",
     question_uz: "Yukimni kuzatish mumkinmi?",
-    answer_ru: "Да, мы предоставляем полную информацию о местонахождении вашего груза на каждом этапе доставки. Вы получите трек-номер и сможете отслеживать груз через наш сайт или мобильное приложение.",
-    answer_uz: "Ha, biz yukingizning har bir bosqichdagi joylashuvi haqida to‘liq ma’lumot beramiz. Siz trek-raqam olasiz va uni saytimiz yoki mobil ilovamiz orqali kuzatishingiz mumkin bo‘ladi."
+    answer_ru: "Да. Мы ежедневно информируем вас о местоположении груза через менеджера.",
+    answer_uz: "Ha. Biz har kuni menejer orqali sizga yukning joylashuvi haqida ma’lumot berib boramiz."
   },
   {
     id: 3,
     question_ru: "Какие грузы вы не перевозите?",
     question_uz: "Qanday yuklarni tashimaysizlar?",
-    answer_ru: "Мы не перевозим опасные, запрещённые к транспортировке грузы, а также товары, требующие специальных разрешений без соответствующих документов. Полный список ограничений можно уточнить у наших менеджеров.",
-    answer_uz: "Biz xavfli, tashish taqiqlangan yuklar hamda maxsus ruxsatnomasiz hujjat talab qilinadigan tovarlarni tashimaymiz. To‘liq cheklovlar ro‘yxatini bizning menejerlarimizdan aniqlashtirishingiz mumkin."
+    answer_ru: "Мы не перевозим запрещённые к транспортировке грузы, а также товары, требующие специальных разрешений без соответствующих документов. Полный список ограничений можно уточнить у наших менеджеров.",
+    answer_uz: "Biz tashish taqiqlangan yuklarni, shuningdek, maxsus ruxsatnomalarsiz maxsus hujjatlarni talab qiladigan tovarlarni tashimaymiz. Cheklovlarning to‘liq ro‘yxatini menejerlarimizdan aniqlashtirishingiz mumkin."
   },
   {
     id: 4,

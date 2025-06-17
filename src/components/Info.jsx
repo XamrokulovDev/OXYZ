@@ -94,7 +94,7 @@ const Info = () => {
 
   return (
     <>
-      <div className="mx-auto container flex justify-between items-start max-md:w-[97%] max-md:p-2 max-md:mx-2 max-md:flex-col max-lg:flex-col max-lg:w-[680px] max-xl:flex-col max-xl:w-[970px] my-30">
+      <div className="mx-auto container flex justify-between items-start max-md:w-[97%] max-md:p-2 max-md:mx-2 max-md:flex-col max-lg:flex-col max-lg:w-[680px] max-xl:flex-col max-xl:w-[970px] md:my-20 mb-10 my-0">
         {/* CHAP PANEL */}
         <div className="flex flex-col gap-4 sticky top-20 h-fit max-md:relative max-md:w-[100vw] w-full p-2 max-md:top-0 max-md:mb-10 max-lg:relative max-lg:mb-10 max-xl:relative max-xl:mb-20">
           <h1 title={t('info.title')} className="max-sm:w-[95%] font-[600] font-manrope md:text-[40px] text-[28px] leading-[120%] text-[#1A1A18] px-4">
@@ -105,7 +105,7 @@ const Info = () => {
           </p>
         </div>
         {/* O'NG PANEL */}
-        <div className=" flex gap-8 max-md:gap-[10px] max-md:w-full max-md:mb-0 max-lg:w-[100%] w-full max-lg:mb-0 max-lg:mt-16">
+        <div className=" flex gap-8 max-md:gap-[10px] max-md:w-full max-md:mb-0 max-lg:w-[100%] w-full max-lg:mb-0 max-lg:mt-0">
           {/* Step raqamlari */}
           <div className="flex flex-col">
             {dataList.map((item) => (

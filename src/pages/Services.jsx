@@ -73,7 +73,7 @@ const Services = () => {
           return (
             <div
               key={service.id}
-              className={`flex justify-between items-center gap-[50px] w-screen mx-auto container max-md:flex-col max-lg:flex-col ${
+              className={`flex justify-between items-center gap-[50px] mx-auto container max-md:flex-col max-lg:flex-col ${
                 isEven ? '' : 'flex-row-reverse'
               }`}
             >
