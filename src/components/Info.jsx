@@ -100,10 +100,10 @@ const Info = () => {
           <h3 title={t('info.sub_title')} className="text-[#A7A6A1] md:text-[24px] text-[21px] font-manrope font-[600] leading-[120%]">
             {t('info.sub_title')}
           </h3>
-          <h1 title={t('info.title')} className="max-sm:w-[95%] font-[600] font-manrope md:text-[40px] text-[28px] leading-[120%] text-[#1A1A18] px-4">
+          <h1 title={t('info.title')} className="max-sm:w-[95%] font-[600] font-manrope md:text-[40px] text-[28px] leading-[120%] text-[#1A1A18] max-md:px-4">
             {t('info.title')}
           </h1>
-          <p className="max-md:w-[90%] md:text-[20px] text-[16px] font-[400] font-manrope leading-[140%] text-[#1A1A18] p-2">
+          <p className="max-md:w-[90%] md:text-[20px] text-[16px] font-[400] font-manrope leading-[140%] text-[#1A1A18] max-md:p-2">
             {t('info.description')}
           </p>
         </div>
