@@ -97,6 +97,9 @@ const Info = () => {
       <div className="mx-auto container flex justify-between items-start max-md:w-[97%] max-md:p-2 max-md:mx-2 max-md:flex-col max-lg:flex-col max-lg:w-[680px] max-xl:flex-col max-xl:w-[970px] md:my-20 mb-10 my-0">
         {/* CHAP PANEL */}
         <div className="flex flex-col gap-4 sticky top-20 h-fit max-md:relative max-md:w-[100vw] w-full p-2 max-md:top-0 max-md:mb-10 max-lg:relative max-lg:mb-10 max-xl:relative max-xl:mb-20">
+          <h3 title={t('info.sub_title')} className="text-[#A7A6A1] md:text-[24px] text-[21px] font-manrope font-[600] leading-[120%]">
+            {t('info.sub_title')}
+          </h3>
           <h1 title={t('info.title')} className="max-sm:w-[95%] font-[600] font-manrope md:text-[40px] text-[28px] leading-[120%] text-[#1A1A18] px-4">
             {t('info.title')}
           </h1>

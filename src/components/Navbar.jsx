@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/logo.svg";
-import logo_scroll from "../assets/Logo.svg";
+import logo from "../assets/LOGO_OXYZ_svg_white.svg";
+import logo_scroll from "../assets/LOGO_OXYZ_svg_black.svg";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaFacebook } from "react-icons/fa6";
 import { TbMenu } from "react-icons/tb";
